@@ -1,5 +1,5 @@
 ###############################################################################
-###### Windows INF file parser
+###### Windows INF file parser Version 1.0
 ###### by Arsen Arutyunyan arutar@bk.ru 2022
 ###### Python module that can open, save, edit Windows INF files (Driver Files)
 ###############################################################################
@@ -457,6 +457,14 @@ class WinINF:
             c=""
             while p != len(line):
                 ma = SeparatorRE.match(line,pos=p)
+                if ma is None:
+                    if v:
+                        v += line[p:]
+                    else:
+                        k += line[p:]
+                    p=len(line)
+                    continue
+                    
                 if ma.group(1) is None:
                     if not fv:
                         k+=ma.group(0)
