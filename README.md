@@ -1,4 +1,4 @@
-# wininfparser
+# wininfparser v1.0
 
 wininfparser Python module that can open, save, edit Windows INF files (Driver Files)
 
