@@ -104,7 +104,7 @@ VersionSection.Info()
 # 
 #DriverVer = 08/20/2004,6.14.10.3889
 
-##
+## iterate over INFsection data
 # k - key 
 # v - value 
 # c - comment
@@ -119,6 +119,7 @@ for k,v,c in VersionSection:
 #Key:   Value: Key: DriverVer  Value: 08/20/2004,6.14.10.3889
 #
 
+## getting data by key
 VersionSection['ClassGUID']
 #{4D36E968-E325-11CE-BFC1-08002BE10318}
 ```
