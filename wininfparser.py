@@ -265,15 +265,15 @@ class INFsection:
         if len(self.__ValueList):
             for CurrentIndex, key in enumerate(self.__KeyList):
                 if key:
-                    print(key, "=", self.__ValueList[CurrentIndex],self.__Comments[CurrentIndex],end="")
+                    print(key, "=", self.__ValueList[CurrentIndex],self.__Comments[CurrentIndex])
                 else:
-                    print(self.__Comments[CurrentIndex], end="")
+                    print(self.__Comments[CurrentIndex])
         else:
             for CurrentIndex, key in enumerate(self.__KeyList):
                 if key:
-                    print(key,self.__Comments[CurrentIndex],end="")
+                    print(key,self.__Comments[CurrentIndex])
                 else:
-                    print(self.__Comments[CurrentIndex], end="")
+                    print(self.__Comments[CurrentIndex])
 
         for i in range(self.__Indent-1):
             print("")
@@ -286,15 +286,15 @@ class INFsection:
         if len(self.__ValueList):
             for CurrentIndex, key in enumerate(self.__KeyList):
                 if key:
-                    Returner += (key + "=" + self.__ValueList[CurrentIndex] + self.__Comments[CurrentIndex])
+                    Returner += (key + "=" + self.__ValueList[CurrentIndex] + self.__Comments[CurrentIndex] + "\n")
                 else:
-                    Returner += (self.__Comments[CurrentIndex])
+                    Returner += (self.__Comments[CurrentIndex] + "\n")
         else:
             for CurrentIndex, key in enumerate(self.__KeyList):
                 if key:
-                    Returner += (key + self.__Comments[CurrentIndex])
+                    Returner += (key + self.__Comments[CurrentIndex] + "\n")
                 else:
-                    Returner += (self.__Comments[CurrentIndex])
+                    Returner += (self.__Comments[CurrentIndex] + "\n")
 
         for i in range(self.__Indent-1):
             Returner+="\n"
@@ -409,6 +409,7 @@ class WinINF:
         SectRE = re.compile(" *\\[([^]]*)\\](\\s*;.*)?")
 
         for line in f:
+            line = line.rstrip()
             if line == "" or EmptyRE.match(line) is not None:
                 if self.__Tail is not None:
                     self.__Tail.AddComment()
