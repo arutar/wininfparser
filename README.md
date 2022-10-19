@@ -3,6 +3,7 @@
 wininfparser Python module that can open, save, edit Windows INF files (Driver Files) 
 
 ## Usage
+opening an inf file, viewing the list of sections, viewing the contents of a section
 
 ```python
 from wininfparser import WinINF, INFsection
@@ -41,4 +42,6 @@ for k,v,c in VersionSection:
 #Key:   Value: Key: DriverVer  Value: 08/20/2004,6.14.10.3889
 #
 
+VersionSection['ClassGUID']
+#{4D36E968-E325-11CE-BFC1-08002BE10318}
 ```
