@@ -33,7 +33,7 @@ class INFsection:
 
     def __next__(self):
         if self.__CurrentIndex is not None:
-            if len(self.__KeyList) <  self.__CurrentIndex+1:
+            if len(self.__KeyList) >  self.__CurrentIndex+1:
                 self.__CurrentIndex+=1
                 if len(self.__ValueList):
                     return self.__KeyList[self.__CurrentIndex],self.__ValueList[self.__CurrentIndex],self.__Comments[self.__CurrentIndex]
@@ -43,7 +43,7 @@ class INFsection:
                 self.__CurrentIndex=None
                 raise StopIteration
         else:
-            if self.Head is None:
+            if not len(self.__KeyList):
                 raise StopIteration
             else:
                 self.__CurrentIndex = 0
@@ -464,7 +464,7 @@ class WinINF:
                         k += line[p:]
                     p=len(line)
                     continue
-                    
+
                 if ma.group(1) is None:
                     if not fv:
                         k+=ma.group(0)
