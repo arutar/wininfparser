@@ -120,6 +120,10 @@ for k,v,c in VersionSection:
 #
 
 ## getting data by key
-VersionSection['ClassGUID']
-#{4D36E968-E325-11CE-BFC1-08002BE10318}
+print(VersionSection['ClassGUID'])
+##{4D36E968-E325-11CE-BFC1-08002BE10318}
+
+## searching for data on a part of the key
+print(VersionSection['GUID'])
+##{4D36E968-E325-11CE-BFC1-08002BE10318}
 ```
