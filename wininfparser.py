@@ -5,7 +5,6 @@
 #  wininfparser - module that can create, open, save, edit Windows INF files (Driver Files).
 #  It easy to understand and use
 #
-
 import re
 import sys
 
@@ -19,19 +18,20 @@ import sys
 #  =================================================
 #  Save, Open INF Files
 #  -------------------------------
-#  - \ref wininfparser.WinINF.ParseFile "ParseFile"
-#  - \ref wininfparser.WinINF.Save "Save"
+#  - \ref wininfparser.WinINF.ParseFile "WinINF.ParseFile"
+#  - \ref wininfparser.WinINF.Save "WinINF.Save"
 #
-#  Search Navigation Modification WinINF Class
-#  -------------------------------
-#  - \ref wininfparser.WinINF.__getitem__ "operator[]"
-#  - \ref wininfparser.WinINF.GetSection "GetSection"
-#  - \ref wininfparser.WinINF.__next__ "__next__"
-#  - \ref wininfparser.WinINF.AddSection "AddSection"
-#  - \ref wininfparser.WinINF.RemoveSection "RemoveSection"
+#  WinINF Class
+#  =================================================
+#  - \ref wininfparser.WinINF.AddSection "WinINF.AddSection"
+#  - \ref wininfparser.WinINF.RemoveSection "WinINF.RemoveSection"
+#  - \ref wininfparser.WinINF.GetSection "WinINF.GetSection"
+#  - \ref wininfparser.WinINF.__getitem__ "WinINF.operator[]"
+#  - \ref wininfparser.WinINF.__next__ "WinINF.__next__"
+#  - \ref wininfparser.WinINF.__iter__ "WinINF.__iter__"
 #
-#  Search Navigation Modification INFsection
-#  -------------------------------
+#  INFsection Class
+#  =================================================
 #  - \ref wininfparser.INFsection.__getitem__ "operator[]"
 #  - \ref wininfparser.INFsection.GetKeyIndex "GetKeyIndex"
 #  - \ref wininfparser.INFsection.FindKey "FindKey"
@@ -46,12 +46,21 @@ import sys
 #  - \ref wininfparser.INFsection.FindKey "FindKey"
 
 
-
+## Can return values, keys, and section comments of INF files.
+#  Allows you to navigate through the contents of a section. Able to add and remove values.
+#  Can search for keys and values within a section
+#  variable       |  description                                        |  Value       |
+#  -------------  |---------------------------                          |------------- |
+#  comment        |typicali header section with \n comments ony content |    1         |
+#  single_line    |section that contains only \n values                 |    2         |
+#  key_pair       |section that contains key \n value pairs             |    3         |
+#
 class INFsection:
     comment=1
     single_line=2
     key_pair=3
 
+    ## Default constructor
     def __init__(self):
         self.__Name=''
         self.__NameComment=''
@@ -66,11 +75,21 @@ class INFsection:
         self.__CurrentIndex = None
         self.__Type=None
 
-
+    ## Lets go through the section content!
+    #  @return INFsection
     def __iter__(self):
         self.__CurrentIndex=None
         return self
 
+    ## Lets go through the section content!
+    #  returns k - key
+    #  returns v - value
+    #  returns c - comment
+    #  \code{.py}
+    #  for k,v,c in VersionSection:
+    #      print("Key:{0:12}".format(k), " Value:", v, " Comment:", c)
+    #  \endcode
+    #  @return str,str,str
     def __next__(self):
         if self.__CurrentIndex is not None:
             if len(self.__KeyList) >  self.__CurrentIndex+1:
@@ -92,54 +111,78 @@ class INFsection:
                 else:
                     return self.__KeyList[self.__CurrentIndex],"",self.__Comments[self.__CurrentIndex]
 
+    ## Returns next Section
+    #  @return INFsection
     def Next(self):
         return self.__NextSection
 
+    ## Sets next Section
+    #  @param n (INFsection) must be Invalid
     def SetNext(self, n):
         if n is not None:
             n.__PreviousSection=self
         self.__NextSection=n
 
+    ## Sets previous Section
+    #  @param p (INFsection) must be Invalid
     def SetPrevious(self, p):
         if p is not None:
             p.__NextSection=self
         self.__PreviousSection=p
 
+    ## Checks if a section can be added to an inf file
+    #  @return bool
     def CheckSection(self):
         if not self.__Name.rstrip() and not len(self.__KeyList):
             return False
         else:
             return True
 
+    ## Returns previous Section
+    #  @return INFsection
     def Previous(self):
         self.__PreviousSection
 
+    ## Sets sction type must be INFsection.comment or INFsection.single_line or INFsection.key_pair
     def SetType(self,t):
         self.__Type=t
 
+    ## Returns Section type
+    #  @return int (INFsection.comment or INFsection.single_line or INFsection.key_pair)
     def GetType(self):
         return self.__Type
 
+    ## Sets indent after section
+    #  @param i (int)
     def SetIndent(self,i: int):
         self.__Indent=i
 
+    ## returns indent after section
+    #  @return int
     def GetIndent(self):
         return self.__Indent
 
+    ## Sets section name
+    #  @param NewName (str)
     def SetName(self,NewName):
         self.__Name=NewName
 
+    ## Sets comment to section name
+    #  @param NewNameComment (str)
     def SetNameComment(self,NewNameComment):
         self.__NameComment=NewNameComment
 
+    ## returns section name
+    #  @param NewName (str)
     def GetName(self):
         return self.__Name
 
+    ## Sets section to valid state
     def SetValid(self):
         if not self.CheckSection():
             return
 
-        if not self.__Name.rstrip():
+        if not self.__Name:
             self.__Type=INFsection.comment
         elif len(self.__ValueList):
             self.__Type = INFsection.key_pair
@@ -148,15 +191,13 @@ class INFsection:
 
         self.__Valid=True
 
+    ## Checks if section valid
+    #  @return bool
     def IsValid(self):
         return self.__Valid
 
-    def GetNext(self):
-        return self.__NextSection
-
-    def GetPrevious(self):
-        return self.__PreviousSection
-
+    ## Function required for parser
+    #  inserts empty laines
     def AddEmptyStrings(self):
         for i in range(self.__Indent-1):
             self.__KeyList.append('')
@@ -166,6 +207,10 @@ class INFsection:
 
         self.__Indent = 0
 
+    ## Adds k,v,c paramentrs to the end of the section
+    #  @param k key (str)
+    #  @param v value (str)
+    #  @param c comment (str)
     def AddData(self,k,v=None,c=None):
         if not self.__Valid:
             self.AddEmptyStrings()
@@ -185,6 +230,8 @@ class INFsection:
         else:
             self.__Comments.append('')
 
+    ## Adds comment to the end of the section
+    #  @param c (str)
     def AddComment(self,c=None):
         if not len(self.__ValueList):
             self.__EmptyCount+=1
@@ -200,7 +247,11 @@ class INFsection:
         else:
             self.__Indent+=1
 
-
+    ## Adds k,v,c parameters to the selected position of the section
+    #  @param pos position (int)
+    #  @param k key (str)
+    #  @param v value (str)
+    #  @param c comment (str)
     def AddDataP(self,pos: int,k,v=None,c=None):
         if len(self.__KeyList) < pos or pos < 0:
             self.AddData(k,v,c)
@@ -225,6 +276,8 @@ class INFsection:
                 self.__Comments.insert(pos,'')
 
 
+    ## Removes first matched key of the section
+    #  @param k key (str)
     def RemoveKey(self, k):
         try:
             CurrentIndex=self.__KeyList.index(k)
@@ -236,6 +289,8 @@ class INFsection:
         except:
             pass
 
+    ## Removes first matched value of the section
+    #  @param v value (str)
     def RemoveValue(self, v):
         try:
             CurrentIndex = self.__ValueList.index(v)
@@ -246,6 +301,8 @@ class INFsection:
         except:
             pass
 
+    ## Removes first matched comment of the section
+    #  @param c comment (str)
     def RemoveComment(self, c):
         try:
             CurrentIndex = self.__Comments.index(c)
@@ -254,9 +311,15 @@ class INFsection:
         except:
             pass
 
+    ## Returns key with selected index
+    #  @param Index (int)
+    #  @return str
     def __getitem__(self, Index: int):
         return self.__KeyList[Index]
 
+    ## Returns key with selected key
+    #  @param k (str)
+    #  @return str
     def __getitem__(self, k: str):
         KeyInd=self.GetKeyIndex(k)
         if len(self.__ValueList):
@@ -264,11 +327,23 @@ class INFsection:
         else:
             return self.FindValue(k)
 
+    ## Sets key value pair
+    #  @param k (str)
+    #  @param v (str)
     def __setitem__(self,k,v):
-        self.__KeyList.append(k)
-        self.__Comments.append("")
-        if v is not None:
-            self.__ValueList.append(v)
+        i=self.GetKeyIndex(k)
+        if i < 0:
+            if len(self.__KeyList):
+                if len(self.__ValueList):
+                    self.__ValueList.append(v)
+            else:
+                self.__ValueList.append(v)
+            self.__KeyList.append(k)
+            self.__Comments.append("")
+
+        else:
+            if len(self.__ValueList):
+                self.__KeyList[i]=v
 
 
     def GetKeyIndex(self,k,p=0):
@@ -343,8 +418,11 @@ class INFsection:
 
 
 
-
+## Class WinINF - Can open INF files, allows you to get a section by its name,
+#  can save INF files, and allows you to walk through all sections of a file
+#
 class WinINF:
+    ## Default constructor
     def __init__(self):
         self.__FileName=""
         self.__Head=None
@@ -353,10 +431,14 @@ class WinINF:
         self.__ItemCount=0
         self.__SectionsDict={}
 
+    ## Lets go through the sections!
+    #  @return WinINF
     def __iter__(self):
         self.__Current=None
         return self
 
+    ## Lets go through the sections!
+    #  @return INFsection
     def __next__(self):
         if self.__Current is not None:
             if self.__Current.Next() is not None:
@@ -372,21 +454,36 @@ class WinINF:
                 self.__Current = self.__Head
                 return self.__Current
 
+    ## Returns section names.
+    #  @return list
     def Sections(self):
         return self.__SectionsDict.keys()
 
+    ## Returns file name.
+    #  @return str
     def GetFileName(self):
         return self.__FileName
 
+    ## Returns section count/
+    #  @return int
     def Count(self):
         return self.__ItemCount
 
+    ## Returns section by name. If section not present None returned.
+    #  `InfFile['Name']`
+    #  @param k (str)
+    #  @return INFsection
     def __getitem__(self, k: str):
         return self.GetSection(k)
 
+    ## Returns section by name. If section not present None returned.
+    #  @param Name (str)
+    #  @return INFsection
     def GetSection(self,Name):
         return self.__SectionsDict.get(Name)
 
+    ## Adds section
+    #  @param Section (INFsection)
     def AddSection(self, Section: INFsection):
         if Section.IsValid():
             print("Yo can add only invalid sections!")
@@ -408,6 +505,8 @@ class WinINF:
             self.__SectionsDict[Section.GetName()] = Section
         self.__ItemCount += 1
 
+    ## Removes selected section!
+    #  @param Section (INFsection)
     def RemoveSection(self, Section: INFsection):
         if not Section.IsValid():
             return
@@ -429,7 +528,9 @@ class WinINF:
                 self.__Tail = p
                 self.__Head = n
 
-
+    ## Opens INF file.
+    #  If Name Full faile path to inf file
+    #  @param Name (str)
     def ParseFile(self,Name):
         self.__Head=None
         self.__Tail=None
@@ -562,6 +663,9 @@ class WinINF:
             self.__Tail.SetValid()
         f.close()
 
+    ## Saves INF file.
+    #  If Name argument is None, then data saved to current file and overwrite information on it
+    #  @param Name (str)
     def Save(self, Name=None):
         if Name is not None:
             self.__FileName=Name
