@@ -74,66 +74,92 @@ $(function() {
   <div class="headertitle"><div class="title">wininfparser.INFsection Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Can return values, keys, and section comments of INF files.  
+ <a href="classwininfparser_1_1_i_n_fsection.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1b2896ff0086109f304e060bf3095e0f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a1b2896ff0086109f304e060bf3095e0f">__init__</a> (self)</td></tr>
+<tr class="memdesc:a1b2896ff0086109f304e060bf3095e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classwininfparser_1_1_i_n_fsection.html#a1b2896ff0086109f304e060bf3095e0f">More...</a><br /></td></tr>
 <tr class="separator:a1b2896ff0086109f304e060bf3095e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af164417073f932492bd76d9e75789ce5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#af164417073f932492bd76d9e75789ce5">__iter__</a> (self)</td></tr>
+<tr class="memdesc:af164417073f932492bd76d9e75789ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lets go through the section content!  <a href="classwininfparser_1_1_i_n_fsection.html#af164417073f932492bd76d9e75789ce5">More...</a><br /></td></tr>
 <tr class="separator:af164417073f932492bd76d9e75789ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f4941da6d02d2d1c21649c551899711"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a2f4941da6d02d2d1c21649c551899711">__next__</a> (self)</td></tr>
+<tr class="memdesc:a2f4941da6d02d2d1c21649c551899711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lets go through the section content! returns k - key returns v - value returns c - comment.  <a href="classwininfparser_1_1_i_n_fsection.html#a2f4941da6d02d2d1c21649c551899711">More...</a><br /></td></tr>
 <tr class="separator:a2f4941da6d02d2d1c21649c551899711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a982c1a1630de5f3805f17e671b16fc2d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a982c1a1630de5f3805f17e671b16fc2d">Next</a> (self)</td></tr>
+<tr class="memdesc:a982c1a1630de5f3805f17e671b16fc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns next Section.  <a href="classwininfparser_1_1_i_n_fsection.html#a982c1a1630de5f3805f17e671b16fc2d">More...</a><br /></td></tr>
 <tr class="separator:a982c1a1630de5f3805f17e671b16fc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e8225f2fdd3adfa7c557744151d2856"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a0e8225f2fdd3adfa7c557744151d2856">SetNext</a> (self, n)</td></tr>
+<tr class="memdesc:a0e8225f2fdd3adfa7c557744151d2856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets next Section.  <a href="classwininfparser_1_1_i_n_fsection.html#a0e8225f2fdd3adfa7c557744151d2856">More...</a><br /></td></tr>
 <tr class="separator:a0e8225f2fdd3adfa7c557744151d2856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3940ccaf64818970d4386c458d5ae15"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#ac3940ccaf64818970d4386c458d5ae15">SetPrevious</a> (self, p)</td></tr>
+<tr class="memdesc:ac3940ccaf64818970d4386c458d5ae15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets previous Section.  <a href="classwininfparser_1_1_i_n_fsection.html#ac3940ccaf64818970d4386c458d5ae15">More...</a><br /></td></tr>
 <tr class="separator:ac3940ccaf64818970d4386c458d5ae15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfcd97ddadf604e0d95bbd1a0fe3d57b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#abfcd97ddadf604e0d95bbd1a0fe3d57b">CheckSection</a> (self)</td></tr>
+<tr class="memdesc:abfcd97ddadf604e0d95bbd1a0fe3d57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a section can be added to an inf file.  <a href="classwininfparser_1_1_i_n_fsection.html#abfcd97ddadf604e0d95bbd1a0fe3d57b">More...</a><br /></td></tr>
 <tr class="separator:abfcd97ddadf604e0d95bbd1a0fe3d57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58a1f55421c49ed75e3231875ff7d355"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a58a1f55421c49ed75e3231875ff7d355">Previous</a> (self)</td></tr>
+<tr class="memdesc:a58a1f55421c49ed75e3231875ff7d355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns previous Section.  <a href="classwininfparser_1_1_i_n_fsection.html#a58a1f55421c49ed75e3231875ff7d355">More...</a><br /></td></tr>
 <tr class="separator:a58a1f55421c49ed75e3231875ff7d355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16148a0e2838dd8005760723d8154b84"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a16148a0e2838dd8005760723d8154b84">SetType</a> (self, t)</td></tr>
+<tr class="memdesc:a16148a0e2838dd8005760723d8154b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets sction type must be <a class="el" href="classwininfparser_1_1_i_n_fsection.html#a427be27d8ab6971774b30255299d259f">INFsection.comment</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#a147fe06c2014a29bbf5b6eea9df59153">INFsection.single_line</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#af20934d8d58415153c249884c18b62f0">INFsection.key_pair</a>.  <a href="classwininfparser_1_1_i_n_fsection.html#a16148a0e2838dd8005760723d8154b84">More...</a><br /></td></tr>
 <tr class="separator:a16148a0e2838dd8005760723d8154b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a965250b8ca2a217bb3531d103feffc1d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a965250b8ca2a217bb3531d103feffc1d">GetType</a> (self)</td></tr>
+<tr class="memdesc:a965250b8ca2a217bb3531d103feffc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Section type.  <a href="classwininfparser_1_1_i_n_fsection.html#a965250b8ca2a217bb3531d103feffc1d">More...</a><br /></td></tr>
 <tr class="separator:a965250b8ca2a217bb3531d103feffc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a97eac7c30e6fa09cbee8d58b9c3d65"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a2a97eac7c30e6fa09cbee8d58b9c3d65">SetIndent</a> (self, int i)</td></tr>
+<tr class="memdesc:a2a97eac7c30e6fa09cbee8d58b9c3d65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets indent after section.  <a href="classwininfparser_1_1_i_n_fsection.html#a2a97eac7c30e6fa09cbee8d58b9c3d65">More...</a><br /></td></tr>
 <tr class="separator:a2a97eac7c30e6fa09cbee8d58b9c3d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4431d920ce5b7834643d6fdcf2d3dcc7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a4431d920ce5b7834643d6fdcf2d3dcc7">GetIndent</a> (self)</td></tr>
+<tr class="memdesc:a4431d920ce5b7834643d6fdcf2d3dcc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns indent after section  <a href="classwininfparser_1_1_i_n_fsection.html#a4431d920ce5b7834643d6fdcf2d3dcc7">More...</a><br /></td></tr>
 <tr class="separator:a4431d920ce5b7834643d6fdcf2d3dcc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d649c964963af2cc5320a66ecc79eb2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a8d649c964963af2cc5320a66ecc79eb2">SetName</a> (self, NewName)</td></tr>
+<tr class="memdesc:a8d649c964963af2cc5320a66ecc79eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets section name.  <a href="classwininfparser_1_1_i_n_fsection.html#a8d649c964963af2cc5320a66ecc79eb2">More...</a><br /></td></tr>
 <tr class="separator:a8d649c964963af2cc5320a66ecc79eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b392b14f917a99ee413478efe231bde"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a5b392b14f917a99ee413478efe231bde">SetNameComment</a> (self, NewNameComment)</td></tr>
+<tr class="memdesc:a5b392b14f917a99ee413478efe231bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets comment to section name.  <a href="classwininfparser_1_1_i_n_fsection.html#a5b392b14f917a99ee413478efe231bde">More...</a><br /></td></tr>
 <tr class="separator:a5b392b14f917a99ee413478efe231bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bbf9ec71e0a6bdf4e9bd6b69e298d84"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a7bbf9ec71e0a6bdf4e9bd6b69e298d84">GetName</a> (self)</td></tr>
+<tr class="memdesc:a7bbf9ec71e0a6bdf4e9bd6b69e298d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns section name  <a href="classwininfparser_1_1_i_n_fsection.html#a7bbf9ec71e0a6bdf4e9bd6b69e298d84">More...</a><br /></td></tr>
 <tr class="separator:a7bbf9ec71e0a6bdf4e9bd6b69e298d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a243ae8e0f22b53ded0b28683335ea3ae"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a243ae8e0f22b53ded0b28683335ea3ae">SetValid</a> (self)</td></tr>
+<tr class="memdesc:a243ae8e0f22b53ded0b28683335ea3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets section to valid state.  <a href="classwininfparser_1_1_i_n_fsection.html#a243ae8e0f22b53ded0b28683335ea3ae">More...</a><br /></td></tr>
 <tr class="separator:a243ae8e0f22b53ded0b28683335ea3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adba6cda54de5ac148b7ab722939a0ecf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#adba6cda54de5ac148b7ab722939a0ecf">IsValid</a> (self)</td></tr>
+<tr class="memdesc:adba6cda54de5ac148b7ab722939a0ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if section valid.  <a href="classwininfparser_1_1_i_n_fsection.html#adba6cda54de5ac148b7ab722939a0ecf">More...</a><br /></td></tr>
 <tr class="separator:adba6cda54de5ac148b7ab722939a0ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ee352c686a5c967bc2b25300b57203f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a9ee352c686a5c967bc2b25300b57203f">GetNext</a> (self)</td></tr>
-<tr class="separator:a9ee352c686a5c967bc2b25300b57203f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05802047b58eb10c9d5468cf9f171069"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a05802047b58eb10c9d5468cf9f171069">GetPrevious</a> (self)</td></tr>
-<tr class="separator:a05802047b58eb10c9d5468cf9f171069"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a124c00149ee36e3497169d938889d7ef"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a124c00149ee36e3497169d938889d7ef">AddEmptyStrings</a> (self)</td></tr>
+<tr class="memdesc:a124c00149ee36e3497169d938889d7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function required for parser inserts empty laines.  <a href="classwininfparser_1_1_i_n_fsection.html#a124c00149ee36e3497169d938889d7ef">More...</a><br /></td></tr>
 <tr class="separator:a124c00149ee36e3497169d938889d7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35829464d83165317b071e0c69cd3dda"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a35829464d83165317b071e0c69cd3dda">AddData</a> (self, k, v=None, c=None)</td></tr>
+<tr class="memdesc:a35829464d83165317b071e0c69cd3dda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds k,v,c paramentrs to the end of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#a35829464d83165317b071e0c69cd3dda">More...</a><br /></td></tr>
 <tr class="separator:a35829464d83165317b071e0c69cd3dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0ad95cf8cd1d289aca39026b526c438"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#ab0ad95cf8cd1d289aca39026b526c438">AddComment</a> (self, c=None)</td></tr>
+<tr class="memdesc:ab0ad95cf8cd1d289aca39026b526c438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds comment to the end of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#ab0ad95cf8cd1d289aca39026b526c438">More...</a><br /></td></tr>
 <tr class="separator:ab0ad95cf8cd1d289aca39026b526c438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab344703fdd2df46e1da4a7bf466e8fc5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#ab344703fdd2df46e1da4a7bf466e8fc5">AddDataP</a> (self, int pos, k, v=None, c=None)</td></tr>
+<tr class="memdesc:ab344703fdd2df46e1da4a7bf466e8fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds k,v,c parameters to the selected position of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#ab344703fdd2df46e1da4a7bf466e8fc5">More...</a><br /></td></tr>
 <tr class="separator:ab344703fdd2df46e1da4a7bf466e8fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecd9c6b30c0bb8aa8520e2feaa2bcd09"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#aecd9c6b30c0bb8aa8520e2feaa2bcd09">RemoveKey</a> (self, k)</td></tr>
+<tr class="memdesc:aecd9c6b30c0bb8aa8520e2feaa2bcd09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes first matched key of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#aecd9c6b30c0bb8aa8520e2feaa2bcd09">More...</a><br /></td></tr>
 <tr class="separator:aecd9c6b30c0bb8aa8520e2feaa2bcd09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00e80c07dd2e112eceee2b133e8fa107"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a00e80c07dd2e112eceee2b133e8fa107">RemoveValue</a> (self, v)</td></tr>
+<tr class="memdesc:a00e80c07dd2e112eceee2b133e8fa107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes first matched value of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#a00e80c07dd2e112eceee2b133e8fa107">More...</a><br /></td></tr>
 <tr class="separator:a00e80c07dd2e112eceee2b133e8fa107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af05474f5e4c7a7db1128f46a25afe27e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#af05474f5e4c7a7db1128f46a25afe27e">RemoveComment</a> (self, c)</td></tr>
+<tr class="memdesc:af05474f5e4c7a7db1128f46a25afe27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes first matched comment of the section.  <a href="classwininfparser_1_1_i_n_fsection.html#af05474f5e4c7a7db1128f46a25afe27e">More...</a><br /></td></tr>
 <tr class="separator:af05474f5e4c7a7db1128f46a25afe27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25f065487b9cac1ea237cf3b1593863f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a25f065487b9cac1ea237cf3b1593863f">__getitem__</a> (self, int Index)</td></tr>
+<tr class="memdesc:a25f065487b9cac1ea237cf3b1593863f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns key with selected index.  <a href="classwininfparser_1_1_i_n_fsection.html#a25f065487b9cac1ea237cf3b1593863f">More...</a><br /></td></tr>
 <tr class="separator:a25f065487b9cac1ea237cf3b1593863f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28363da0b0ec4640376937c29f14d2ae"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a28363da0b0ec4640376937c29f14d2ae">__getitem__</a> (self, str k)</td></tr>
+<tr class="memdesc:a28363da0b0ec4640376937c29f14d2ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns key with selected key.  <a href="classwininfparser_1_1_i_n_fsection.html#a28363da0b0ec4640376937c29f14d2ae">More...</a><br /></td></tr>
 <tr class="separator:a28363da0b0ec4640376937c29f14d2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba1b437ac11c33ccf9df7a2011cf0b97"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#aba1b437ac11c33ccf9df7a2011cf0b97">__setitem__</a> (self, k, v)</td></tr>
+<tr class="memdesc:aba1b437ac11c33ccf9df7a2011cf0b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets key value pair.  <a href="classwininfparser_1_1_i_n_fsection.html#aba1b437ac11c33ccf9df7a2011cf0b97">More...</a><br /></td></tr>
 <tr class="separator:aba1b437ac11c33ccf9df7a2011cf0b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a60d50fe4fa59cda676ae3cacdbe6570c">GetKeyIndex</a> (self, k, p=0)</td></tr>
 <tr class="separator:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,7 +185,22 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:af20934d8d58415153c249884c18b62f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#af20934d8d58415153c249884c18b62f0">key_pair</a> = 3</td></tr>
 <tr class="separator:af20934d8d58415153c249884c18b62f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Can return values, keys, and section comments of INF files. </p>
+<p >Allows you to navigate through the contents of a section. Able to add and remove values. Can search for keys and values within a section </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">variable   </th><th class="markdownTableHeadNone">description   </th><th class="markdownTableHeadNone">Value    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">comment   </td><td class="markdownTableBodyNone">typicali header section with <br  />
+ comments ony content   </td><td class="markdownTableBodyNone">1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">single_line   </td><td class="markdownTableBodyNone">section that contains only <br  />
+ values   </td><td class="markdownTableBodyNone">2    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">key_pair   </td><td class="markdownTableBodyNone">section that contains key <br  />
+ value pairs   </td><td class="markdownTableBodyNone">3   </td></tr>
+</table>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1b2896ff0086109f304e060bf3095e0f" name="a1b2896ff0086109f304e060bf3095e0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b2896ff0086109f304e060bf3095e0f">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -175,6 +216,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -205,6 +248,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns key with selected index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Index</td><td>(int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>str </dd></dl>
+
 </div>
 </div>
 <a id="a28363da0b0ec4640376937c29f14d2ae" name="a28363da0b0ec4640376937c29f14d2ae"></a>
@@ -233,6 +285,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns key with selected key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>str </dd></dl>
+
 </div>
 </div>
 <a id="af164417073f932492bd76d9e75789ce5" name="af164417073f932492bd76d9e75789ce5"></a>
@@ -251,6 +312,9 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Lets go through the section content! </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classwininfparser_1_1_i_n_fsection.html" title="Can return values, keys, and section comments of INF files.">INFsection</a> </dd></dl>
+
 </div>
 </div>
 <a id="a2f4941da6d02d2d1c21649c551899711" name="a2f4941da6d02d2d1c21649c551899711"></a>
@@ -268,6 +332,11 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Lets go through the section content! returns k - key returns v - value returns c - comment. </p>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> k,v,c <span class="keywordflow">in</span> VersionSection:</div>
+<div class="line">    print(<span class="stringliteral">&quot;Key:{0:12}&quot;</span>.format(k), <span class="stringliteral">&quot; Value:&quot;</span>, v, <span class="stringliteral">&quot; Comment:&quot;</span>, c)</div>
+</div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd>str,str,str </dd></dl>
 
 </div>
 </div>
@@ -303,6 +372,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets key value pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>(str) </td></tr>
+    <tr><td class="paramname">v</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab0ad95cf8cd1d289aca39026b526c438" name="ab0ad95cf8cd1d289aca39026b526c438"></a>
@@ -330,6 +408,14 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds comment to the end of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -370,6 +456,16 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds k,v,c paramentrs to the end of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>key (str) </td></tr>
+    <tr><td class="paramname">v</td><td>value (str) </td></tr>
+    <tr><td class="paramname">c</td><td>comment (str) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -417,6 +513,17 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds k,v,c parameters to the selected position of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>position (int) </td></tr>
+    <tr><td class="paramname">k</td><td>key (str) </td></tr>
+    <tr><td class="paramname">v</td><td>value (str) </td></tr>
+    <tr><td class="paramname">c</td><td>comment (str) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a124c00149ee36e3497169d938889d7ef" name="a124c00149ee36e3497169d938889d7ef"></a>
@@ -435,6 +542,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function required for parser inserts empty laines. </p>
+
 </div>
 </div>
 <a id="abfcd97ddadf604e0d95bbd1a0fe3d57b" name="abfcd97ddadf604e0d95bbd1a0fe3d57b"></a>
@@ -452,6 +561,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if a section can be added to an inf file. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
 </div>
 </div>
@@ -573,6 +685,9 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>returns indent after section </p>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
 </div>
 </div>
 <a id="a60d50fe4fa59cda676ae3cacdbe6570c" name="a60d50fe4fa59cda676ae3cacdbe6570c"></a>
@@ -625,41 +740,13 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a9ee352c686a5c967bc2b25300b57203f" name="a9ee352c686a5c967bc2b25300b57203f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ee352c686a5c967bc2b25300b57203f">&#9670;&nbsp;</a></span>GetNext()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def wininfparser.INFsection.GetNext </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a05802047b58eb10c9d5468cf9f171069" name="a05802047b58eb10c9d5468cf9f171069"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05802047b58eb10c9d5468cf9f171069">&#9670;&nbsp;</a></span>GetPrevious()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">def wininfparser.INFsection.GetPrevious </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>returns section name </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NewName</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -678,6 +765,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns Section type. </p>
+<dl class="section return"><dt>Returns</dt><dd>int (<a class="el" href="classwininfparser_1_1_i_n_fsection.html#a427be27d8ab6971774b30255299d259f">INFsection.comment</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#a147fe06c2014a29bbf5b6eea9df59153">INFsection.single_line</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#af20934d8d58415153c249884c18b62f0">INFsection.key_pair</a>) </dd></dl>
 
 </div>
 </div>
@@ -743,6 +833,9 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if section valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
 </div>
 </div>
 <a id="a982c1a1630de5f3805f17e671b16fc2d" name="a982c1a1630de5f3805f17e671b16fc2d"></a>
@@ -761,6 +854,9 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns next Section. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classwininfparser_1_1_i_n_fsection.html" title="Can return values, keys, and section comments of INF files.">INFsection</a> </dd></dl>
+
 </div>
 </div>
 <a id="a58a1f55421c49ed75e3231875ff7d355" name="a58a1f55421c49ed75e3231875ff7d355"></a>
@@ -778,6 +874,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns previous Section. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classwininfparser_1_1_i_n_fsection.html" title="Can return values, keys, and section comments of INF files.">INFsection</a> </dd></dl>
 
 </div>
 </div>
@@ -807,6 +906,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Removes first matched comment of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>comment (str) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aecd9c6b30c0bb8aa8520e2feaa2bcd09" name="aecd9c6b30c0bb8aa8520e2feaa2bcd09"></a>
@@ -835,6 +942,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Removes first matched key of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>key (str) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a00e80c07dd2e112eceee2b133e8fa107" name="a00e80c07dd2e112eceee2b133e8fa107"></a>
@@ -862,6 +977,14 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Removes first matched value of the section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>value (str) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -909,6 +1032,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets indent after section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>(int) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a8d649c964963af2cc5320a66ecc79eb2" name="a8d649c964963af2cc5320a66ecc79eb2"></a>
@@ -936,6 +1067,14 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets section name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NewName</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -965,6 +1104,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets comment to section name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NewNameComment</td><td>(str) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0e8225f2fdd3adfa7c557744151d2856" name="a0e8225f2fdd3adfa7c557744151d2856"></a>
@@ -992,6 +1139,14 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets next Section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>(<a class="el" href="classwininfparser_1_1_i_n_fsection.html" title="Can return values, keys, and section comments of INF files.">INFsection</a>) must be Invalid </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1021,6 +1176,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets previous Section. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>(<a class="el" href="classwininfparser_1_1_i_n_fsection.html" title="Can return values, keys, and section comments of INF files.">INFsection</a>) must be Invalid </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a16148a0e2838dd8005760723d8154b84" name="a16148a0e2838dd8005760723d8154b84"></a>
@@ -1049,6 +1212,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets sction type must be <a class="el" href="classwininfparser_1_1_i_n_fsection.html#a427be27d8ab6971774b30255299d259f">INFsection.comment</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#a147fe06c2014a29bbf5b6eea9df59153">INFsection.single_line</a> or <a class="el" href="classwininfparser_1_1_i_n_fsection.html#af20934d8d58415153c249884c18b62f0">INFsection.key_pair</a>. </p>
+
 </div>
 </div>
 <a id="a243ae8e0f22b53ded0b28683335ea3ae" name="a243ae8e0f22b53ded0b28683335ea3ae"></a>
@@ -1066,6 +1231,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets section to valid state. </p>
 
 </div>
 </div>
