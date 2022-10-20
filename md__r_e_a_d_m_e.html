@@ -71,7 +71,7 @@ $(function() {
 <p >Full documentation <a href="https://arutar.github.io/wininfparser/">here</a>.</p>
 <h1>Usage</h1>
 <ul>
-<li>open and save inf file</li>
+<li>#### Open and save inf file</li>
 </ul>
 <div class="fragment"><div class="line"><span class="keyword">from</span> wininfparser <span class="keyword">import</span> WinINF, INFsection</div>
 <div class="line"> </div>
@@ -82,6 +82,20 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="comment">#Save Intel.inf on th same place</span></div>
 <div class="line">InfFile.Save()</div>
+</div><!-- fragment --><h2>Windows INF File Example</h2>
+<div class="fragment"><div class="line">- #### Sections manipulations</div>
+<div class="line"> </div>
+<div class="line">```python</div>
+<div class="line">from wininfparser import WinINF, INFsection</div>
+<div class="line"> </div>
+<div class="line">InfFile = WinINF()</div>
+<div class="line">InfFile.ParseFile(&quot;с:\\path_to_inf\\Intel.inf&quot;)</div>
+<div class="line"> </div>
+<div class="line">#GetSection name list</div>
+<div class="line">print(InfFile.Sections())</div>
+<div class="line"> </div>
+<div class="line">Get Version section from WinINF</div>
+<div class="line">VersionSection=InfFile[&quot;Version&quot;]</div>
 </div><!-- fragment --><h2>Windows INF File Example</h2>
 <div class="fragment"><div class="line">;=============================================================================</div>
 <div class="line">;</div>
