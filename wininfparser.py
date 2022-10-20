@@ -5,6 +5,7 @@
 #  wininfparser - module that can create, open, save, edit Windows INF files (Driver Files).
 #  It easy to understand and use
 #
+
 import re
 import sys
 
