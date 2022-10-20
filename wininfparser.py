@@ -44,11 +44,6 @@ import sys
 #  - \ref wininfparser.INFsection.FindValue "FindValue"
 #  - \ref wininfparser.INFsection.FindKey "FindKey"
 
-#
-#
-#
-#
-
 
 
 class INFsection:
