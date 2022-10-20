@@ -9,7 +9,7 @@ Full documentation [here](https://arutar.github.io/wininfparser/).
 
 
 ## Usage
-- open and save inf file
+- #### Open and save inf file
 
 ```python
 from wininfparser import WinINF, INFsection
@@ -21,6 +21,24 @@ InfFile.ParseFile("с:\\path_to_inf\\Intel.inf")
 
 #Save Intel.inf on th same place
 InfFile.Save()
+```
+
+### Windows INF File Example
+```dosini
+
+- #### Sections manipulations
+
+```python
+from wininfparser import WinINF, INFsection
+
+InfFile = WinINF()
+InfFile.ParseFile("с:\\path_to_inf\\Intel.inf")
+
+#GetSection name list
+print(InfFile.Sections())
+
+Get Version section from WinINF
+VersionSection=InfFile["Version"]
 ```
 
 ### Windows INF File Example
