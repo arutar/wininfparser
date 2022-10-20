@@ -1,11 +1,55 @@
-###############################################################################
-###### Windows INF file parser Version 1.0
-###### by Arsen Arutyunyan arutar@bk.ru 2022
-###### Python module that can open, save, edit Windows INF files (Driver Files)
-###############################################################################
-
+## @package wininfparser
+#  @author Arsen Arutyunyan arutar@bk.ru 2022
+#  wininfparser - module for working with Windows INF files
+#
+#  wininfparser - module that can create, open, save, edit Windows INF files (Driver Files).
+#  It easy to understand and use
+#
 import re
 import sys
+
+## @mainpage
+#  Main Classes
+#  =================================================
+#  - \ref wininfparser.INFsection "INFsection"
+#  - \ref wininfparser.WinINF "WinINF"
+#
+#  List of basic functions for working with wininfparser
+#  =================================================
+#  Save, Open INF Files
+#  -------------------------------
+#  - \ref wininfparser.WinINF.ParseFile "ParseFile"
+#  - \ref wininfparser.WinINF.Save "Save"
+#
+#  Search Navigation Modification WinINF Class
+#  -------------------------------
+#  - \ref wininfparser.WinINF.__getitem__ "operator[]"
+#  - \ref wininfparser.WinINF.GetSection "GetSection"
+#  - \ref wininfparser.WinINF.__next__ "__next__"
+#  - \ref wininfparser.WinINF.AddSection "AddSection"
+#  - \ref wininfparser.WinINF.RemoveSection "RemoveSection"
+#
+#  Search Navigation Modification INFsection
+#  -------------------------------
+#  - \ref wininfparser.INFsection.__getitem__ "operator[]"
+#  - \ref wininfparser.INFsection.GetKeyIndex "GetKeyIndex"
+#  - \ref wininfparser.INFsection.FindKey "FindKey"
+#  - \ref wininfparser.INFsection.__next__ "__next__"
+#  - \ref wininfparser.INFsection.Next "Next"
+#  - \ref wininfparser.INFsection.Previous "Previous"
+#  - \ref wininfparser.INFsection.AddData "AddData"
+#  - \ref wininfparser.INFsection.AddDataP "AddDataP"
+#  - \ref wininfparser.INFsection.FindKey "FindKey"
+#  - \ref wininfparser.INFsection.FindValueIndex "FindValueIndex"
+#  - \ref wininfparser.INFsection.FindValue "FindValue"
+#  - \ref wininfparser.INFsection.FindKey "FindKey"
+
+#
+#
+#
+#
+
+
 
 class INFsection:
     comment=1
@@ -122,7 +166,7 @@ class INFsection:
             self.__KeyList.append('')
             if len(self.__ValueList):
                 self.__ValueList.append('')
-            self.__Comments.append('\n')
+            self.__Comments.append('')
 
         self.__Indent = 0
 
