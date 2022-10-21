@@ -55,7 +55,21 @@ InfFile.AddSection(n)
 
 #Save Intel.inf on th same place
 InfFile.Save()
+```
 
+- #### Remove sections
+
+```python
+InfFile = WinINF()
+InfFile.ParseFile("./Intel.inf")
+
+#Find and remove New_Section
+s=InfFile['New_Section']
+if s is not None:
+    InfFile.RemoveSection(s)
+
+#Save Intel.inf on th same place
+InfFile.Save()
 ```
 
 
