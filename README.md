@@ -40,6 +40,18 @@ s=InfFile['Manufacturer']
 if s is not None:
     print(s.GetName())
 
+#Sets number of white spaces to the last section
+InfFile.Last().SetIndent(3)
+
+#New section creation
+n=INFsection()
+
+n.SetName("New_Section")
+n.AddData("Path".ljust(12)," ./somepath")
+n.AddData("Version".ljust(12)," 2.34.57")
+
+InfFile.AddSection(n)
+
 ```
 
 
