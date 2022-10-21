@@ -52,6 +52,9 @@ n.AddData("Version".ljust(12)," 2.34.57")
 
 InfFile.AddSection(n)
 
+#Save Intel.inf on th same place
+InfFile.Save()
+
 ```
 
 
