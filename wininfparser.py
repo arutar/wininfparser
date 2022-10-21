@@ -1,5 +1,6 @@
 ## @package wininfparser
-#  @author Arsen Arutyunyan arutar@bk.ru 2022
+#  @author Arsen Arutyunyan arutar@bk.ru /21.10.2022/
+#
 #  wininfparser - module for working with Windows INF files
 #
 #  wininfparser - module that can create, open, save, edit Windows INF files (Driver Files).
@@ -32,18 +33,32 @@ import sys
 #
 #  INFsection Class
 #  =================================================
-#  - \ref wininfparser.INFsection.__getitem__ "operator[]"
-#  - \ref wininfparser.INFsection.GetKeyIndex "GetKeyIndex"
-#  - \ref wininfparser.INFsection.FindKey "FindKey"
-#  - \ref wininfparser.INFsection.__next__ "__next__"
-#  - \ref wininfparser.INFsection.Next "Next"
-#  - \ref wininfparser.INFsection.Previous "Previous"
-#  - \ref wininfparser.INFsection.AddData "AddData"
-#  - \ref wininfparser.INFsection.AddDataP "AddDataP"
-#  - \ref wininfparser.INFsection.FindKey "FindKey"
-#  - \ref wininfparser.INFsection.FindValueIndex "FindValueIndex"
-#  - \ref wininfparser.INFsection.FindValue "FindValue"
-#  - \ref wininfparser.INFsection.FindKey "FindKey"
+#  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
+#  - \ref wininfparser.INFsection.Next "INFsection.Next"
+#  - \ref wininfparser.INFsection.Previous "INFsection.Previous"
+#  - \ref wininfparser.INFsection.AddData "INFsection.AddData"
+#  - \ref wininfparser.INFsection.AddDataP "INFsection.AddDataP"
+#  - \ref wininfparser.INFsection.FindKey "INFsection.FindKey"
+#  - \ref wininfparser.INFsection.FindValueIndex "INFsection.FindValueIndex"
+#  - \ref wininfparser.INFsection.FindValue "INFsection.FindValue"
+#  - \ref wininfparser.INFsection.GetValue "INFsection.GetValue"
+#  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
+#  - \ref wininfparser.INFsection.CheckSection "INFsection.CheckSection"
+#  - \ref wininfparser.INFsection.GetType "INFsection.GetType"
+#  - \ref wininfparser.INFsection.SetIndent "INFsection.SetIndent"
+#  - \ref wininfparser.INFsection.GetIndent "INFsection.GetIndent"
+#  - \ref wininfparser.INFsection.SetName "INFsection.SetName"
+#  - \ref wininfparser.INFsection.SetNameComment "INFsection.SetNameComment"
+#  - \ref wininfparser.INFsection.IsValid "INFsection.IsValid"
+#  - \ref wininfparser.INFsection.AddComment "INFsection.AddComment"
+#  - \ref wininfparser.INFsection.RemoveKey "INFsection.RemoveKey"
+#  - \ref wininfparser.INFsection.RemoveValue "INFsection.RemoveValue"
+#  - \ref wininfparser.INFsection.SearchKeyIter "INFsection.SearchKeyIter"
+#  - \ref wininfparser.INFsection.SearchValueIter "INFsection.SearchValueIter"
+#  - \ref wininfparser.INFsection.Info "INFsection.Info"
+#  - \ref wininfparser.INFsection.Save "INFsection.Save"
+#  - \ref wininfparser.INFsection.__getitem__ "INFsection.operator[]"
+#  - \ref wininfparser.INFsection.__next__ "INFsection.__next__"
 
 
 ## Can return values, keys, and section comments of INF files.
