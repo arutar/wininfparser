@@ -71,18 +71,35 @@ $(function() {
 <p >Full documentation <a href="https://arutar.github.io/wininfparser/">here</a>.</p>
 <h1>Usage</h1>
 <ul>
-<li>#### Open and save inf file</li>
+<li>#### Open and save inf files</li>
 </ul>
 <div class="fragment"><div class="line"><span class="keyword">from</span> wininfparser <span class="keyword">import</span> WinINF, INFsection</div>
 <div class="line"> </div>
 <div class="line">InfFile = WinINF()</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">#Open Intel.inf</span></div>
-<div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;с:\\path_to_inf\\Intel.inf&quot;</span>)</div>
+<div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">#Save Intel.inf on th same place</span></div>
 <div class="line">InfFile.Save()</div>
-</div><!-- fragment --><h2>Windows INF File Example</h2>
+</div><!-- fragment --><ul>
+<li>#### Section management <div class="fragment"><div class="line">InfFile = WinINF()</div>
+<div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># print section names</span></div>
+<div class="line">print(InfFile.Sections())</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># iterate over sections</span></div>
+<div class="line"><span class="keywordflow">for</span> s <span class="keywordflow">in</span> InfFile:</div>
+<div class="line">    print(s.GetName())</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#Find section by name</span></div>
+<div class="line">s=InfFile[<span class="stringliteral">&#39;Manufacturer&#39;</span>]</div>
+<div class="line"><span class="keywordflow">if</span> s <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line">    print(s.GetName())</div>
+</div><!-- fragment --></li>
+</ul>
+<h2>Windows INF File Example</h2>
 <div class="fragment"><div class="line">- #### Sections manipulations</div>
 <div class="line"> </div>
 <div class="line">```python</div>
