@@ -132,6 +132,7 @@ $(function() {
 <div class="fragment"><div class="line">InfFile = WinINF()</div>
 <div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
 <div class="line"> </div>
+<div class="line"><span class="comment"># Get &quot;Intel.Mfg&quot; section</span></div>
 <div class="line">s=InfFile[<span class="stringliteral">&#39;Intel.Mfg&#39;</span>]</div>
 <div class="line"><span class="keywordflow">if</span> s <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
 <div class="line">    print(<span class="stringliteral">&quot;Error: section not found!&quot;</span>)</div>
