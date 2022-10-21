@@ -42,23 +42,6 @@ if s is not None:
 
 ```
 
-### Windows INF File Example
-```dosini
-
-- #### Sections manipulations
-
-```python
-from wininfparser import WinINF, INFsection
-
-InfFile = WinINF()
-InfFile.ParseFile("с:\\path_to_inf\\Intel.inf")
-
-#GetSection name list
-print(InfFile.Sections())
-
-Get Version section from WinINF
-VersionSection=InfFile["Version"]
-```
 
 ### Windows INF File Example
 ```dosini
