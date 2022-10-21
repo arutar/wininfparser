@@ -74,11 +74,21 @@ class INFsection:
         self.__EmptyCount = 0
         self.__CurrentIndex = None
         self.__Type=None
+        self.__SearchKey=None
+        self.__SearchKeyIndex=0
+        self.__SearchValue = None
+        self.__SearchValueIndex = 0
+        self.__ItHelpFlag=False
 
     ## Lets go through the section content!
     #  @return INFsection
     def __iter__(self):
-        self.__CurrentIndex=None
+        if not self.__ItHelpFlag:
+            self.__CurrentIndex=None
+            self.__SearchKey = None
+            self.__SearchValue = None
+        else:
+            self.__ItHelpFlag=False
         return self
 
     ## Lets go through the section content!
@@ -91,6 +101,32 @@ class INFsection:
     #  \endcode
     #  @return str,str,str
     def __next__(self):
+        if self.__SearchKey is not None:
+            self.__SearchKeyIndex=self.GetKeyIndex(self.__SearchKey,self.__SearchKeyIndex)
+            if self.__SearchKeyIndex < 0:
+                self.__SearchKey = None
+                self.__SearchKeyIndex = 0
+                raise StopIteration
+            else:
+                Index=self.__SearchKeyIndex
+                self.__SearchKeyIndex+=1
+                if len(self.__ValueList):
+                    return self.__KeyList[Index], self.__ValueList[Index], self.__Comments[Index]
+                else:
+                    return self.__KeyList[Index], "", self.__Comments[Index]
+
+
+        if self.__SearchValue is not None:
+            self.__SearchValueIndex=self.FindValueIndex(self.__SearchValue,self.__SearchValueIndex)
+            if self.__SearchValueIndex < 0:
+                self.__SearchValue = None
+                self.__SearchValueIndex = 0
+                raise StopIteration
+            else:
+                Index=self.__SearchValueIndex
+                self.__SearchValueIndex+=1
+                return self.__KeyList[Index], self.__ValueList[Index], self.__Comments[Index]
+
         if self.__CurrentIndex is not None:
             if len(self.__KeyList) >  self.__CurrentIndex+1:
                 self.__CurrentIndex+=1
@@ -311,21 +347,20 @@ class INFsection:
         except:
             pass
 
-    ## Returns key with selected index
-    #  @param Index (int)
-    #  @return str
-    def __getitem__(self, Index: int):
-        return self.__KeyList[Index]
-
-    ## Returns key with selected key
+    ## Returns key with selected k name
     #  @param k (str)
     #  @return str
-    def __getitem__(self, k: str):
-        KeyInd=self.GetKeyIndex(k)
-        if len(self.__ValueList):
-            return self.__ValueList[KeyInd]
+    def __getitem__(self, k):
+        if type(k) is str:
+            KeyInd=self.GetKeyIndex(k)
+            if len(self.__ValueList):
+                return self.__ValueList[KeyInd]
+            else:
+                return self.FindValue(k)
+        elif type(k) is int:
+            return self.__KeyList[k]
         else:
-            return self.FindValue(k)
+            raise ValueError
 
     ## Sets key value pair
     #  @param k (str)
@@ -345,34 +380,75 @@ class INFsection:
             if len(self.__ValueList):
                 self.__KeyList[i]=v
 
-
+    ## Searchs key where (k in key) from position p
+    #  @param k (str)
+    #  @param p (int)
+    #  @return int
     def GetKeyIndex(self,k,p=0):
         for CurrentIndex, key in enumerate(self.__KeyList):
             if CurrentIndex>=p and k in key:
                 return CurrentIndex
         return -1
 
+    ## Searchs key where (k in key) from position p
+    #  this function used to iterate over section and search
+    #  @param k (str)
+    #  @param p (int)
+    #  @return k,v,c (key,value,comment)
+    def SearchKeyIter(self, k, p=0):
+        self.__ItHelpFlag = True
+        self.__SearchKey=k
+        self.__SearchKeyIndex=p
+        return self
+
+    ## Searchs value where (v in value) from position p
+    #  this function used to iterate over section and search
+    #  @param v (str)
+    #  @param p (int)
+    #  @return str (key,value,comment)
+    def SearchValueIter(self, v, p=0):
+        self.__ItHelpFlag = True
+        self.__SearchValue=v
+        self.__SearchValueIndex=p
+        return self
+
+    ## Searchs key where (k in key) from position p
+    #  @param k (str)
+    #  @param p (int)
+    #  @return str (full key string)
     def FindKey(self,k,p=0):
         for CurrentIndex, key in enumerate(self.__KeyList):
             if CurrentIndex>=p and k in key:
                 return key
         return ""
 
+    ## Searchs value where (v in value) from position p
+    #  @param v (str)
+    #  @param p (int)
+    #  @return int
     def FindValueIndex(self,v,p=0):
         for CurrentIndex, val in enumerate(self.__ValueList):
             if CurrentIndex>=p and v in val:
                 return CurrentIndex
         return -1
 
+    ## Searchs value where (v in value) from position p
+    #  @param v (str)
+    #  @param p (int)
+    #  @return str (full value string)
     def FindValue(self,v,p=0):
         for CurrentIndex, val in enumerate(self.__ValueList):
             if CurrentIndex>=p and v in val:
                 return val
         return ""
 
+    ## Returns value with selected index
+    #  @param Index (int)
+    #  @return str
     def GetValue(self,Index):
         return self.__ValueList[Index]
 
+    ## Prints all section content
     def Info(self):
         if self.__Name != "":
             print("[{0}]{1}".format(self.__Name,self.__NameComment))
@@ -393,6 +469,8 @@ class INFsection:
         for i in range(self.__Indent-1):
             print("")
 
+    ## Saves all section content to the string
+    #  @return str
     def Save(self):
         Returner=""
         if self.__Name != "":
@@ -458,6 +536,16 @@ class WinINF:
     #  @return list
     def Sections(self):
         return self.__SectionsDict.keys()
+
+    ## Returns first section
+    #  @return INFsection
+    def First(self):
+        return self.__Head
+
+    ## Returns last section
+    #  @return INFsection
+    def Last(self):
+        return self.__Tail
 
     ## Returns file name.
     #  @return str
