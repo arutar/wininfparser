@@ -79,6 +79,7 @@ InfFile.Save()
 InfFile = WinINF()
 InfFile.ParseFile("./Intel.inf")
 
+# Get "Intel.Mfg" section
 s=InfFile['Intel.Mfg']
 if s is None:
     print("Error: section not found!")
