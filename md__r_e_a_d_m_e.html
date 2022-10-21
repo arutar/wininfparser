@@ -97,6 +97,18 @@ $(function() {
 <div class="line">s=InfFile[<span class="stringliteral">&#39;Manufacturer&#39;</span>]</div>
 <div class="line"><span class="keywordflow">if</span> s <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
 <div class="line">    print(s.GetName())</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#Sets number of white spaces to the last section</span></div>
+<div class="line">InfFile.Last().SetIndent(3)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#New section creation</span></div>
+<div class="line">n=INFsection()</div>
+<div class="line"> </div>
+<div class="line">n.SetName(<span class="stringliteral">&quot;New_Section&quot;</span>)</div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Path&quot;</span>.ljust(12),<span class="stringliteral">&quot; ./somepath&quot;</span>)</div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Version&quot;</span>.ljust(12),<span class="stringliteral">&quot; 2.34.57&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">InfFile.AddSection(n)</div>
 </div><!-- fragment --></li>
 </ul>
 <h2>Windows INF File Example</h2>
