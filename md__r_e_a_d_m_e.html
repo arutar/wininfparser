@@ -114,8 +114,19 @@ $(function() {
 <div class="line"><span class="comment">#Save Intel.inf on th same place</span></div>
 <div class="line">InfFile.Save()</div>
 </div><!-- fragment --></li>
+<li>#### Remove sections</li>
 </ul>
-<h2>Windows INF File Example</h2>
+<div class="fragment"><div class="line">InfFile = WinINF()</div>
+<div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#Find and remove New_Section</span></div>
+<div class="line">s=InfFile[<span class="stringliteral">&#39;New_Section&#39;</span>]</div>
+<div class="line"><span class="keywordflow">if</span> s <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line">    InfFile.RemoveSection(s)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#Save Intel.inf on th same place</span></div>
+<div class="line">InfFile.Save()</div>
+</div><!-- fragment --><h2>Windows INF File Example</h2>
 <div class="fragment"><div class="line">;=============================================================================</div>
 <div class="line">;</div>
 <div class="line">; Copyright (c) Intel Corporation (2002).</div>
