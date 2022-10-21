@@ -73,6 +73,34 @@ InfFile.Save()
 ```
 
 
+- #### Section content view and search
+
+```python
+InfFile = WinINF()
+InfFile.ParseFile("./Intel.inf")
+
+s=InfFile['Intel.Mfg']
+if s is None:
+    print("Error: section not found!")
+    sys.exit(-10)
+
+#Get key with index 2
+Key=s[2]
+print(Key)
+
+# Find the first key containing "iBKDG" and return its value
+Key=s["iBKDG"]
+print(Key)
+
+#Searches for keys that contain "i830M" and returns their values
+for k,v,c in s.SearchKeyIter("i830M"):
+    print(v)
+
+#Print all section content
+for k,v,c in s:
+    print(v)
+```
+
 ### Windows INF File Example
 ```dosini
 ;=============================================================================
