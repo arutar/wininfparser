@@ -393,7 +393,7 @@ class INFsection:
 
         else:
             if len(self.__ValueList):
-                self.__KeyList[i]=v
+                self.__ValueList[i]=v
 
     ## Searchs key where (k in key) from position p
     #  @param k (str)
