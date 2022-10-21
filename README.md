@@ -1,4 +1,4 @@
-# wininfparser v1.0
+# wininfparser
 
 INF files parser for python
 
