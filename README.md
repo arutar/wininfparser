@@ -49,6 +49,7 @@ n=INFsection()
 n.SetName("New_Section")
 n.AddData("Path".ljust(12)," ./somepath")
 n.AddData("Version".ljust(12)," 2.34.57")
+n["TestKey".ljust(12)] = " TestValue"
 
 InfFile.AddSection(n)
 
