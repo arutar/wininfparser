@@ -10,6 +10,5 @@ var searchData=
   ['setnext_7',['SetNext',['../classwininfparser_1_1_i_n_fsection.html#a0e8225f2fdd3adfa7c557744151d2856',1,'wininfparser::INFsection']]],
   ['setprevious_8',['SetPrevious',['../classwininfparser_1_1_i_n_fsection.html#ac3940ccaf64818970d4386c458d5ae15',1,'wininfparser::INFsection']]],
   ['settype_9',['SetType',['../classwininfparser_1_1_i_n_fsection.html#a16148a0e2838dd8005760723d8154b84',1,'wininfparser::INFsection']]],
-  ['setvalid_10',['SetValid',['../classwininfparser_1_1_i_n_fsection.html#a243ae8e0f22b53ded0b28683335ea3ae',1,'wininfparser::INFsection']]],
-  ['single_5fline_11',['single_line',['../classwininfparser_1_1_i_n_fsection.html#a147fe06c2014a29bbf5b6eea9df59153',1,'wininfparser::INFsection']]]
+  ['setvalid_10',['SetValid',['../classwininfparser_1_1_i_n_fsection.html#a243ae8e0f22b53ded0b28683335ea3ae',1,'wininfparser::INFsection']]]
 ];

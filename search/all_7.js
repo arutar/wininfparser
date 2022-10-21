@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['next_0',['Next',['../classwininfparser_1_1_i_n_fsection.html#a982c1a1630de5f3805f17e671b16fc2d',1,'wininfparser::INFsection']]]
+  ['last_0',['Last',['../classwininfparser_1_1_win_i_n_f.html#aaba9fad000fb91da3f0b18153e525cf1',1,'wininfparser::WinINF']]]
 ];
