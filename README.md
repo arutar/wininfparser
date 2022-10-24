@@ -68,8 +68,8 @@ s=InfFile['New_Section']
 if s is not None:
     InfFile.RemoveSection(s)
 
-#Save Intel.inf on th same place
-InfFile.Save()
+    #Save Intel.inf on th same place
+    InfFile.Save()
 ```
 
 
