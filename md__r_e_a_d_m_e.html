@@ -101,13 +101,17 @@ $(function() {
 <div class="line"><span class="comment">#Sets number of white spaces to the last section</span></div>
 <div class="line">InfFile.Last().SetIndent(3)</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">#New section creation</span></div>
 <div class="line">n=INFsection()</div>
 <div class="line"> </div>
+<div class="line"><span class="comment"># Enable key alignment</span></div>
+<div class="line"><span class="comment"># set indent after key 1</span></div>
+<div class="line"><span class="comment"># set indent before value 1</span></div>
+<div class="line">n.SetKeyAutoSize(<span class="keyword">True</span>,1,1)</div>
+<div class="line"> </div>
 <div class="line">n.SetName(<span class="stringliteral">&quot;New_Section&quot;</span>)</div>
-<div class="line">n.AddData(<span class="stringliteral">&quot;Path&quot;</span>.ljust(12),<span class="stringliteral">&quot; ./somepath&quot;</span>)</div>
-<div class="line">n.AddData(<span class="stringliteral">&quot;Version&quot;</span>.ljust(12),<span class="stringliteral">&quot; 2.34.57&quot;</span>)</div>
-<div class="line">n[<span class="stringliteral">&quot;TestKey&quot;</span>.ljust(12)] = <span class="stringliteral">&quot; TestValue&quot;</span></div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Path&quot;</span>,<span class="stringliteral">&quot;./somepath&quot;</span>)</div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Version&quot;</span>,<span class="stringliteral">&quot;2.34.57&quot;</span>)</div>
+<div class="line">n[<span class="stringliteral">&quot;TestKey&quot;</span>]=<span class="stringliteral">&quot;TestValue&quot;</span></div>
 <div class="line"> </div>
 <div class="line">InfFile.AddSection(n)</div>
 <div class="line"> </div>
