@@ -43,13 +43,17 @@ if s is not None:
 #Sets number of white spaces to the last section
 InfFile.Last().SetIndent(3)
 
-#New section creation
 n=INFsection()
 
+# Enable key alignment
+# set indent after key 1
+# set indent before value 1
+n.SetKeyAutoSize(True,1,1)
+
 n.SetName("New_Section")
-n.AddData("Path".ljust(12)," ./somepath")
-n.AddData("Version".ljust(12)," 2.34.57")
-n["TestKey".ljust(12)] = " TestValue"
+n.AddData("Path","./somepath")
+n.AddData("Version","2.34.57")
+n["TestKey"]="TestValue"
 
 InfFile.AddSection(n)
 
