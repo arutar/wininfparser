@@ -125,10 +125,13 @@ class INFsection:
     #  @param valueWhitespaces (int) number of whitespaces before value
     #  @param fKeyAlignment (bool)
     def SetKeyAutoSize(self,fKeyAlignment:bool = True,keyWhitespaces:int = None,valueWhitespaces:int = None):
-        self.__kAlignment=fKeyAlignment
-
-        if not fKeyAlignment:
+        if self.__kAlignment != fKeyAlignment:
+            self.__kAlignment=fKeyAlignment
             self.__kAlignmentSize=0
+            if fKeyAlignment:
+                for k in self.__KeyList:
+                    if len(k) > self.__kAlignmentSize:
+                        self.__kAlignmentSize=len(k)
 
         if keyWhitespaces is not None:
             self.__kMinWS=keyWhitespaces
