@@ -97,9 +97,6 @@ class INFsection:
         self.__NextSection=None
         self.__PreviousSection=None
         self.__Indent=0
-        self.__KIndent=0
-        self.__VIndent=0
-        self.__KAlignLarger=False
         self.__EmptyCount = 0
         self.__CurrentIndex = None
         self.__Type=None
