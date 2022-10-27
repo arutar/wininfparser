@@ -43,18 +43,21 @@ if s is not None:
 #Sets number of white spaces to the last section
 InfFile.Last().SetIndent(3)
 
+#Create new section, and set section name 
 n=INFsection()
+n.SetName("New_Section")
 
 # Enable key alignment
 # set indent after key 1
 # set indent before value 1
 n.SetKeyAutoSize(True,1,1)
 
-n.SetName("New_Section")
+#Add key/value data to section
 n.AddData("Path","./somepath")
 n.AddData("Version","2.34.57")
 n["TestKey"]="TestValue"
 
+#Add section to the end of the inf file
 InfFile.AddSection(n)
 
 #Save Intel.inf on th same place
