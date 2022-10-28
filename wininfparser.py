@@ -675,7 +675,7 @@ class WinINF:
     #  @param Section (INFsection)
     def AddSection(self, Section: INFsection):
         if Section.IsValid():
-            print("Yo can add only invalid sections!")
+            print("You can add only invalid sections!")
             return
         if not Section.CheckSection():
             print("Error: Can't add emty section!")
