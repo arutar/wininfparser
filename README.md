@@ -59,6 +59,7 @@ n.SetKeyAutoSize(True,1,1,4)
 #
 # also n.SetIndents(1,1,4) can be used
 
+#Add key/value/comment data to section
 n.SetName("New_Section")
 n.AddData("Path","./somepath")
 n.AddData("Version","2.34.57","megatest")
@@ -68,7 +69,10 @@ n.AddComment()
 n.AddComment()
 n.AddComment(" some comment 2")
 
+#Add section to the end of the inf file
 InfFile.AddSection(n)
+
+#Save inf file
 InfFile.Save(./new_file.inf)
 ```
 
