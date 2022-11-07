@@ -35,6 +35,9 @@ import sys
 #  =================================================
 #  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
 #  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
+#  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
+#  - \ref wininfparser.INFsection.SetHeader "INFsection.SetHeader"
+#  - \ref wininfparser.INFsection.SetIndents "INFsection.SetIndents"
 #  - \ref wininfparser.INFsection.Next "INFsection.Next"
 #  - \ref wininfparser.INFsection.Previous "INFsection.Previous"
 #  - \ref wininfparser.INFsection.AddData "INFsection.AddData"
@@ -140,6 +143,24 @@ class INFsection:
             self.__kMinWS=valueWhitespaces
         if commentWhitespaces is not None:
             self.__cMinWS=commentWhitespaces
+
+    ## Sets the header for the section
+    #  @param h (str)
+    def SetHeader(self,h:str):
+        if self.__Name:
+            print('Error: Header section must be unnamed!')
+            return
+
+        self.__KeyList.clear()
+        self.__ValueList.clear()
+        self.__Comments.clear()
+        self.__Indent=0
+        self.__EmptyCount = 0
+
+        for c in h.split('\n'):
+            if not c: c = ' '
+            self.__KeyList.append('')
+            self.__Comments.append(c)
 
     ## sets section indents: whitespaces after key, whitespaces before value and whitespaces before comment
     #  @param keyWhitespaces (int) number of whitespaces after key
@@ -353,7 +374,7 @@ class INFsection:
     #  @param k key (str)
     #  @param v value (str)
     #  @param c comment (str)
-    def AddData(self,k,v=None,c=None):
+    def AddData(self,k,v=None,c=None,fraw=False):
         if not self.__Valid:
             self.AddEmptyStrings()
 
@@ -375,12 +396,12 @@ class INFsection:
             self.__ValueList.append('')
 
         if c is not None:
-            c = c.lstrip(' \t')
-
-            if c and c[0]==';':
-                c=c[1:]
-                if not c:
-                    c=' '
+            if fraw:
+                c = c.lstrip(' \t')
+                if c and c[0]==';':
+                    c=c[1:]
+                    if not c:
+                        c=' '
 
             self.__Comments.append(c)
         else:
@@ -388,17 +409,17 @@ class INFsection:
 
     ## Adds comment to the end of the section
     #  @param c (str)
-    def AddComment(self,c=None):
+    def AddComment(self,c=None,fraw=False):
         if not len(self.__ValueList):
             self.__EmptyCount+=1
 
-        if c is not None: c = c.lstrip(' \t')
-
         if c :
-            if c[0] == ';':
-                c = c[1:]
-                if not c:
-                    c = ' '
+            if fraw:
+                c = c.lstrip(' \t')
+                if c and c[0]==';':
+                    c=c[1:]
+                    if not c:
+                        c=' '
 
             self.AddEmptyStrings()
 
@@ -415,7 +436,7 @@ class INFsection:
     #  @param k key (str)
     #  @param v value (str)
     #  @param c comment (str)
-    def AddDataP(self,pos: int,k,v=None,c=None):
+    def AddDataP(self,pos: int,k,v=None,c=None,fraw=False):
         if len(self.__KeyList) < pos or pos < 0:
             self.AddData(k,v,c)
             return
@@ -442,12 +463,13 @@ class INFsection:
                 self.__ValueList.insert(pos,'')
 
             if c is not None:
-                c = c.lstrip(' \t')
+                if fraw:
+                    c = c.lstrip(' \t')
+                    if c and c[0] == ';':
+                        c = c[1:]
+                        if not c:
+                            c = ' '
 
-                if c and c[0] == ';':
-                    c = c[1:]
-                    if not c:
-                        c = ' '
                 self.__Comments.insert(pos,c)
             else:
                 self.__Comments.insert(pos,'')
@@ -821,12 +843,12 @@ class WinINF:
             if ms is not None:
                 if self.__Head is None:
                     NewSection = INFsection(True)
-                    NewSection.AddComment(line)
+                    NewSection.AddComment(line,fraw=True)
                     self.__Head=NewSection
                     self.__Tail=NewSection
                     self.__ItemCount += 1
                 else:
-                    self.__Tail.AddComment(line)
+                    self.__Tail.AddComment(line,fraw=True)
 
                 continue
 
@@ -889,10 +911,10 @@ class WinINF:
                         else:
                             k += ma.group(0)
                             if f_open:
-                                f_open=False;
+                                f_open=False
                                 SeparatorRE=SepRE
                             else:
-                                f_open = True;
+                                f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
                     else:
@@ -906,18 +928,18 @@ class WinINF:
                         else:
                             v += ma.group(0)
                             if f_open:
-                                f_open=False;
+                                f_open=False
                                 SeparatorRE=ValueRE
                             else:
-                                f_open = True;
+                                f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
 
             if self.__Tail is not None:
                 if v:
-                    self.__Tail.AddData(k,v,c)
+                    self.__Tail.AddData(k,v,c,fraw=True)
                 else:
-                    self.__Tail.AddData(k, None, c)
+                    self.__Tail.AddData(k, None, c,fraw=True)
 
         if self.__Tail is not None:
             self.__Tail.SetValid()
