@@ -59,7 +59,7 @@ n.SetKeyAutoSize(True,1,1,4)
 #
 # also n.SetIndents(1,1,4) can be used
 
-#Add key/value/comment data to section
+#Add key/value/comment data to the section
 n.SetName("New_Section")
 n.AddData("Path","./somepath")
 n.AddData("Version","2.34.57","megatest")
@@ -105,7 +105,7 @@ n.SetName("New_Section")
 # set indent before value 1
 n.SetKeyAutoSize(True,1,1)
 
-#Add key/value data to section
+#Add key/value data to the section
 n.AddData("Path","./somepath")
 n.AddData("Version","2.34.57")
 n["TestKey"]="TestValue"
