@@ -41,7 +41,7 @@ h="""##########################
 
 ##########################"""
 
-# Create header and set indent 3 after it 
+# Creates a header and sets an indent of 3 after it 
 n=INFsection()
 n.SetHeader(h)
 n.SetIndent(3)
