@@ -34,6 +34,10 @@ import sys
 #  INFsection Class
 #  =================================================
 #  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
+#  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
+#  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
+#  - \ref wininfparser.INFsection.SetHeader "INFsection.SetHeader"
+#  - \ref wininfparser.INFsection.SetIndents "INFsection.SetIndents"
 #  - \ref wininfparser.INFsection.Next "INFsection.Next"
 #  - \ref wininfparser.INFsection.Previous "INFsection.Previous"
 #  - \ref wininfparser.INFsection.AddData "INFsection.AddData"
@@ -80,12 +84,14 @@ class INFsection:
         self.__AutoSizes=AutodetectSizes
         self.__kMinWS=1
         self.__vMinWS=1
+        self.__cMinWS=4
         self.__kAlignment=False
         self.__kAlignmentSize=0
 
         if self.__AutoSizes:
             self.__kMinWS=10000
             self.__vMinWS=10000
+            self.__cMinWS=10000
             self.__kAlignment = True
 
         self.__Name=''
@@ -117,11 +123,12 @@ class INFsection:
             self.__ItHelpFlag=False
         return self
 
-    ## automatic alignment of keys by maximum length
+    ## automatic alignment of keys according to the maximum length and setting the indent after the key and before the value
     #  @param keyWhitespaces (int) number of whitespaces after key
     #  @param valueWhitespaces (int) number of whitespaces before value
+    #  @param commentWhitespaces (int) number of whitespaces before comment
     #  @param fKeyAlignment (bool)
-    def SetKeyAutoSize(self,fKeyAlignment:bool = True,keyWhitespaces:int = None,valueWhitespaces:int = None):
+    def SetKeyAutoSize(self,fKeyAlignment:bool = True,keyWhitespaces:int = None,valueWhitespaces:int = None,commentWhitespaces:int = None):
         if self.__kAlignment != fKeyAlignment:
             self.__kAlignment=fKeyAlignment
             self.__kAlignmentSize=0
@@ -134,7 +141,38 @@ class INFsection:
             self.__kMinWS=keyWhitespaces
         if valueWhitespaces is not None:
             self.__kMinWS=valueWhitespaces
+        if commentWhitespaces is not None:
+            self.__cMinWS=commentWhitespaces
 
+    ## Sets the header for the section
+    #  @param h (str)
+    def SetHeader(self,h:str):
+        if self.__Name:
+            print('Error: Header section must be unnamed!')
+            return
+
+        self.__KeyList.clear()
+        self.__ValueList.clear()
+        self.__Comments.clear()
+        self.__Indent=0
+        self.__EmptyCount = 0
+
+        for c in h.split('\n'):
+            if not c: c = ' '
+            self.__KeyList.append('')
+            self.__Comments.append(c)
+
+    ## sets section indents: whitespaces after key, whitespaces before value and whitespaces before comment
+    #  @param keyWhitespaces (int) number of whitespaces after key
+    #  @param valueWhitespaces (int) number of whitespaces before value
+    #  @param commentWhitespaces (int) number of whitespaces before comment
+    def SetIndents(self,keyWhitespaces:int = None,valueWhitespaces:int = None,commentWhitespaces:int = None):
+        if keyWhitespaces is not None:
+            self.__kMinWS=keyWhitespaces
+        if valueWhitespaces is not None:
+            self.__kMinWS=valueWhitespaces
+        if commentWhitespaces is not None:
+            self.__cMinWS=commentWhitespaces
 
     ## Lets go through the section content!
     #  returns k - key
@@ -302,7 +340,7 @@ class INFsection:
             self.__kAlignmentSize=klen
 
 
-    def __kvAligment(self,k,v):
+    def __kvAligment(self,k,v,c):
         if not k:
             return
         klen = len(k)
@@ -325,25 +363,31 @@ class INFsection:
             if (vlen - vnewlen) < self.__vMinWS:
                 self.__vMinWS = vlen - vnewlen
 
+        if c is not None and c:
+            clen = len(c)
+            cnewlen = len(c.lstrip())
+
+            if (clen - cnewlen) < self.__cMinWS:
+                self.__cMinWS = clen - cnewlen
+
     ## Adds k,v,c paramentrs to the end of the section
     #  @param k key (str)
     #  @param v value (str)
     #  @param c comment (str)
-    def AddData(self,k,v=None,c=None):
+    def AddData(self,k,v=None,c=None,fraw=False):
         if not self.__Valid:
             self.AddEmptyStrings()
 
         if self.__AutoSizes and not self.__Valid:
-            self.__kvAligment(k,v)
+            self.__kvAligment(k,v,c)
         elif self.__kAlignment:
             self.__kUpdateASize(k)
 
         if k: k=k.rstrip()
-        if v is not None: v=v.lstrip()
-
         self.__KeyList.append(k)
 
         if v is not None:
+            v = v.lstrip()
             if self.__EmptyCount:
                 self.__ValueList=['' for i in range(self.__EmptyCount)]
                 self.__EmptyCount=0
@@ -352,17 +396,31 @@ class INFsection:
             self.__ValueList.append('')
 
         if c is not None:
+            if fraw:
+                c = c.lstrip(' \t')
+                if c and c[0]==';':
+                    c=c[1:]
+                    if not c:
+                        c=' '
+
             self.__Comments.append(c)
         else:
             self.__Comments.append('')
 
     ## Adds comment to the end of the section
     #  @param c (str)
-    def AddComment(self,c=None):
+    def AddComment(self,c=None,fraw=False):
         if not len(self.__ValueList):
             self.__EmptyCount+=1
 
-        if c is not None and ";" in c:
+        if c :
+            if fraw:
+                c = c.lstrip(' \t')
+                if c and c[0]==';':
+                    c=c[1:]
+                    if not c:
+                        c=' '
+
             self.AddEmptyStrings()
 
             self.__KeyList.append('')
@@ -378,7 +436,7 @@ class INFsection:
     #  @param k key (str)
     #  @param v value (str)
     #  @param c comment (str)
-    def AddDataP(self,pos: int,k,v=None,c=None):
+    def AddDataP(self,pos: int,k,v=None,c=None,fraw=False):
         if len(self.__KeyList) < pos or pos < 0:
             self.AddData(k,v,c)
             return
@@ -392,11 +450,11 @@ class INFsection:
                 self.__kUpdateASize(k)
 
             if k: k = k.rstrip()
-            if v is not None: v = v.lstrip()
 
             self.__KeyList.insert(pos,k)
 
             if v is not None:
+                v = v.lstrip()
                 if self.__EmptyCount:
                     self.__ValueList = ['' for i in range(self.__EmptyCount)]
                     self.__EmptyCount = 0
@@ -405,6 +463,13 @@ class INFsection:
                 self.__ValueList.insert(pos,'')
 
             if c is not None:
+                if fraw:
+                    c = c.lstrip(' \t')
+                    if c and c[0] == ';':
+                        c = c[1:]
+                        if not c:
+                            c = ' '
+
                 self.__Comments.insert(pos,c)
             else:
                 self.__Comments.insert(pos,'')
@@ -551,16 +616,30 @@ class INFsection:
             rjlen = self.__kMinWS + 1
             ljlen = rjlen + self.__vMinWS
             for CurrentIndex, key in enumerate(self.__KeyList):
-                if key:
-                    print(key.ljust(self.__kAlignmentSize), "=".rjust(rjlen).ljust(ljlen), self.__ValueList[CurrentIndex],self.__Comments[CurrentIndex])
+                if self.__Comments[CurrentIndex]:
+                    csize=self.__cMinWS+1
+                    if not key: csize=0
+                    c=';'.rjust(csize) + self.__Comments[CurrentIndex].rstrip()
                 else:
-                    print(self.__Comments[CurrentIndex])
+                    c=''
+
+                if key:
+                    print(key.ljust(self.__kAlignmentSize), "=".rjust(rjlen).ljust(ljlen), self.__ValueList[CurrentIndex],c)
+                else:
+                    print(c)
         else:
             for CurrentIndex, key in enumerate(self.__KeyList):
-                if key:
-                    print(key.ljust(self.__kAlignmentSize),self.__Comments[CurrentIndex])
+                if self.__Comments[CurrentIndex]:
+                    csize=self.__cMinWS+1
+                    if not key: csize=0
+                    c=';'.rjust(csize) + self.__Comments[CurrentIndex].rstrip()
                 else:
-                    print(self.__Comments[CurrentIndex])
+                    c=''
+
+                if key:
+                    print(key.ljust(self.__kAlignmentSize),c)
+                else:
+                    print(c)
 
         for i in range(self.__Indent-1):
             print("")
@@ -579,16 +658,30 @@ class INFsection:
             rjlen = self.__kMinWS + 1
             ljlen = rjlen + self.__vMinWS
             for CurrentIndex, key in enumerate(self.__KeyList):
-                if key:
-                    Returner += (key.ljust(self.__kAlignmentSize) + "=".rjust(rjlen).ljust(ljlen) + self.__ValueList[CurrentIndex] + self.__Comments[CurrentIndex] + "\n")
+                if self.__Comments[CurrentIndex]:
+                    csize=self.__cMinWS+1
+                    if not key: csize=0
+                    c=';'.rjust(csize) + self.__Comments[CurrentIndex].rstrip()
                 else:
-                    Returner += (self.__Comments[CurrentIndex] + "\n")
+                    c=''
+
+                if key:
+                    Returner += (key.ljust(self.__kAlignmentSize) + "=".rjust(rjlen).ljust(ljlen) + self.__ValueList[CurrentIndex] + c + "\n")
+                else:
+                    Returner += (c + "\n")
         else:
             for CurrentIndex, key in enumerate(self.__KeyList):
-                if key:
-                    Returner += (key.ljust(self.__kAlignmentSize) + self.__Comments[CurrentIndex] + "\n")
+                if self.__Comments[CurrentIndex]:
+                    csize=self.__cMinWS+1
+                    if not key: csize=0
+                    c=';'.rjust(csize) + self.__Comments[CurrentIndex].rstrip()
                 else:
-                    Returner += (self.__Comments[CurrentIndex] + "\n")
+                    c=''
+
+                if key:
+                    Returner += (key.ljust(self.__kAlignmentSize) + c + "\n")
+                else:
+                    Returner += (c + "\n")
 
         for i in range(self.__Indent-1):
             Returner+="\n"
@@ -750,12 +843,12 @@ class WinINF:
             if ms is not None:
                 if self.__Head is None:
                     NewSection = INFsection(True)
-                    NewSection.AddComment(line)
+                    NewSection.AddComment(line,fraw=True)
                     self.__Head=NewSection
                     self.__Tail=NewSection
                     self.__ItemCount += 1
                 else:
-                    self.__Tail.AddComment(line)
+                    self.__Tail.AddComment(line,fraw=True)
 
                 continue
 
@@ -818,10 +911,10 @@ class WinINF:
                         else:
                             k += ma.group(0)
                             if f_open:
-                                f_open=False;
+                                f_open=False
                                 SeparatorRE=SepRE
                             else:
-                                f_open = True;
+                                f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
                     else:
@@ -835,18 +928,18 @@ class WinINF:
                         else:
                             v += ma.group(0)
                             if f_open:
-                                f_open=False;
+                                f_open=False
                                 SeparatorRE=ValueRE
                             else:
-                                f_open = True;
+                                f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
 
             if self.__Tail is not None:
                 if v:
-                    self.__Tail.AddData(k,v,c)
+                    self.__Tail.AddData(k,v,c,fraw=True)
                 else:
-                    self.__Tail.AddData(k, None, c)
+                    self.__Tail.AddData(k, None, c,fraw=True)
 
         if self.__Tail is not None:
             self.__Tail.SetValid()

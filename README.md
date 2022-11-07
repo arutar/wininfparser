@@ -26,6 +26,52 @@ InfFile.ParseFile("./Intel.inf")
 InfFile.Save()
 ```
 
+- #### Create new inf file
+
+```python
+from wininfparser import WinINF, INFsection
+
+InfFile = WinINF()
+
+h="""##########################
+
+ Header data 07/11/2023
+ Other data
+ Some very important information
+
+##########################"""
+
+# Creates a header and sets an indent of 3 after it 
+n=INFsection()
+n.SetHeader(h)
+n.SetIndent(3)
+
+# Add header to the inf file
+InfFile.AddSection(n)
+
+n=INFsection()
+
+# Enable key alignment
+# set indent after key 1
+# set indent before value 1
+# set indent before comment 4
+n.SetKeyAutoSize(True,1,1,4)
+#
+# also n.SetIndents(1,1,4) can be used
+
+n.SetName("New_Section")
+n.AddData("Path","./somepath")
+n.AddData("Version","2.34.57","megatest")
+n["TestKey"]="TestValue"
+n.AddComment(" some comment")
+n.AddComment()
+n.AddComment()
+n.AddComment(" some comment 2")
+
+InfFile.AddSection(n)
+InfFile.Save(./new_file.inf)
+```
+
 - #### Section management
 ```python
 InfFile = WinINF()
