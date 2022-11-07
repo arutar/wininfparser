@@ -85,6 +85,50 @@ $(function() {
 <div class="line"><span class="comment">#Save Intel.inf on th same place</span></div>
 <div class="line">InfFile.Save()</div>
 </div><!-- fragment --><ul>
+<li>#### Create new inf file</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keyword">from</span> wininfparser <span class="keyword">import</span> WinINF, INFsection</div>
+<div class="line"> </div>
+<div class="line">InfFile = WinINF()</div>
+<div class="line"> </div>
+<div class="line">h=<span class="stringliteral">&quot;&quot;&quot;##########################</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral"> Header data 07/11/2023</span></div>
+<div class="line"><span class="stringliteral"> Other data</span></div>
+<div class="line"><span class="stringliteral"> Some very important information</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">##########################&quot;&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Creates a header and sets an indent of 3 after it </span></div>
+<div class="line">n=INFsection()</div>
+<div class="line">n.SetHeader(h)</div>
+<div class="line">n.SetIndent(3)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Add header to the inf file</span></div>
+<div class="line">InfFile.AddSection(n)</div>
+<div class="line"> </div>
+<div class="line">n=INFsection()</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Enable key alignment</span></div>
+<div class="line"><span class="comment"># set indent after key 1</span></div>
+<div class="line"><span class="comment"># set indent before value 1</span></div>
+<div class="line"><span class="comment"># set indent before comment 4</span></div>
+<div class="line">n.SetKeyAutoSize(<span class="keyword">True</span>,1,1,4)</div>
+<div class="line"><span class="comment">#</span></div>
+<div class="line"><span class="comment"># also n.SetIndents(1,1,4) can be used</span></div>
+<div class="line"> </div>
+<div class="line">n.SetName(<span class="stringliteral">&quot;New_Section&quot;</span>)</div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Path&quot;</span>,<span class="stringliteral">&quot;./somepath&quot;</span>)</div>
+<div class="line">n.AddData(<span class="stringliteral">&quot;Version&quot;</span>,<span class="stringliteral">&quot;2.34.57&quot;</span>,<span class="stringliteral">&quot;megatest&quot;</span>)</div>
+<div class="line">n[<span class="stringliteral">&quot;TestKey&quot;</span>]=<span class="stringliteral">&quot;TestValue&quot;</span></div>
+<div class="line">n.AddComment(<span class="stringliteral">&quot; some comment&quot;</span>)</div>
+<div class="line">n.AddComment()</div>
+<div class="line">n.AddComment()</div>
+<div class="line">n.AddComment(<span class="stringliteral">&quot; some comment 2&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">InfFile.AddSection(n)</div>
+<div class="line">InfFile.Save(./new_file.inf)</div>
+</div><!-- fragment --><ul>
 <li>#### Section management <div class="fragment"><div class="line">InfFile = WinINF()</div>
 <div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
 <div class="line"> </div>
