@@ -117,6 +117,7 @@ $(function() {
 <div class="line"><span class="comment">#</span></div>
 <div class="line"><span class="comment"># also n.SetIndents(1,1,4) can be used</span></div>
 <div class="line"> </div>
+<div class="line"><span class="comment">#Add key/value/comment data to section</span></div>
 <div class="line">n.SetName(<span class="stringliteral">&quot;New_Section&quot;</span>)</div>
 <div class="line">n.AddData(<span class="stringliteral">&quot;Path&quot;</span>,<span class="stringliteral">&quot;./somepath&quot;</span>)</div>
 <div class="line">n.AddData(<span class="stringliteral">&quot;Version&quot;</span>,<span class="stringliteral">&quot;2.34.57&quot;</span>,<span class="stringliteral">&quot;megatest&quot;</span>)</div>
@@ -126,7 +127,10 @@ $(function() {
 <div class="line">n.AddComment()</div>
 <div class="line">n.AddComment(<span class="stringliteral">&quot; some comment 2&quot;</span>)</div>
 <div class="line"> </div>
+<div class="line"><span class="comment">#Add section to the end of the inf file</span></div>
 <div class="line">InfFile.AddSection(n)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">#Save inf file</span></div>
 <div class="line">InfFile.Save(./new_file.inf)</div>
 </div><!-- fragment --><ul>
 <li>#### Section management <div class="fragment"><div class="line">InfFile = WinINF()</div>
