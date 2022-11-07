@@ -46,7 +46,7 @@ n=INFsection()
 n.SetHeader(h)
 n.SetIndent(3)
 
-# Add header to inf file
+# Add header to the inf file
 InfFile.AddSection(n)
 
 n=INFsection()
