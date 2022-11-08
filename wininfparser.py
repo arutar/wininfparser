@@ -35,7 +35,6 @@ import sys
 #  =================================================
 #  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
 #  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
-#  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
 #  - \ref wininfparser.INFsection.SetHeader "INFsection.SetHeader"
 #  - \ref wininfparser.INFsection.SetIndents "INFsection.SetIndents"
 #  - \ref wininfparser.INFsection.Next "INFsection.Next"
@@ -322,7 +321,7 @@ class INFsection:
     ## Function required for parser
     #  inserts empty laines
     def AddEmptyStrings(self):
-        for i in range(self.__Indent-1):
+        for i in range(self.__Indent):
             self.__KeyList.append('')
             if len(self.__ValueList):
                 self.__ValueList.append('')
@@ -641,7 +640,7 @@ class INFsection:
                 else:
                     print(c)
 
-        for i in range(self.__Indent-1):
+        for i in range(self.__Indent):
             print("")
 
     ## Saves all section content to the string
@@ -683,7 +682,7 @@ class INFsection:
                 else:
                     Returner += (c + "\n")
 
-        for i in range(self.__Indent-1):
+        for i in range(self.__Indent):
             Returner+="\n"
 
         return Returner
@@ -836,8 +835,8 @@ class WinINF:
             if line == "" or EmptyRE.match(line) is not None:
                 if self.__Tail is not None:
                     self.__Tail.AddComment()
-                else:
-                    continue
+
+                continue
 
             ms = CommentRE.match(line)
             if ms is not None:
