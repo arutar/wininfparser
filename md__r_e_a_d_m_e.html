@@ -135,6 +135,23 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="comment">#Save inf file</span></div>
 <div class="line">InfFile.Save(./new_file.inf)</div>
+</div><!-- fragment --> <h4>Otput - ./new_file.inf</h4>
+<div class="fragment"><div class="line">;##########################</div>
+<div class="line">;</div>
+<div class="line">; Header data 07/11/2023</div>
+<div class="line">; Other data</div>
+<div class="line">; Some very important information</div>
+<div class="line">;</div>
+<div class="line">;##########################</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">[New_Section]</div>
+<div class="line">Path    = ./somepath</div>
+<div class="line">Version = 2.34.57    ;megatest</div>
+<div class="line">TestKey = TestValue</div>
+<div class="line">; some comment</div>
+<div class="line"> </div>
+<div class="line">; some comment 2</div>
 </div><!-- fragment --><ul>
 <li>#### Section management <div class="fragment"><div class="line">InfFile = WinINF()</div>
 <div class="line">InfFile.ParseFile(<span class="stringliteral">&quot;./Intel.inf&quot;</span>)</div>
