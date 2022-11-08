@@ -89,11 +89,13 @@ InfFile.Save(./new_file.inf)
 ;##########################
 
 
+
 [New_Section]
 Path    = ./somepath
 Version = 2.34.57    ;megatest
 TestKey = TestValue
 ; some comment
+
 
 ; some comment 2
 ```
