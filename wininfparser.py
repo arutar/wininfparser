@@ -45,7 +45,6 @@ import sys
 #  - \ref wininfparser.INFsection.FindValueIndex "INFsection.FindValueIndex"
 #  - \ref wininfparser.INFsection.FindValue "INFsection.FindValue"
 #  - \ref wininfparser.INFsection.GetValue "INFsection.GetValue"
-#  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
 #  - \ref wininfparser.INFsection.CheckSection "INFsection.CheckSection"
 #  - \ref wininfparser.INFsection.GetType "INFsection.GetType"
 #  - \ref wininfparser.INFsection.SetIndent "INFsection.SetIndent"
@@ -514,11 +513,13 @@ class INFsection:
     #  @return str
     def __getitem__(self, k):
         if type(k) is str:
-            KeyInd=self.GetKeyIndex(k)
+            KeyInd=self.GetExactKeyIndex(k)
+            if KeyInd < 0:
+                return ""
+
             if len(self.__ValueList):
                 return self.__ValueList[KeyInd]
-            else:
-                return self.FindValue(k)
+            return k
         elif type(k) is int:
             return self.__KeyList[k]
         else:
@@ -528,20 +529,30 @@ class INFsection:
     #  @param k (str)
     #  @param v (str)
     def __setitem__(self,k,v):
-        i=self.GetKeyIndex(k)
+        i=self.GetExactKeyIndex(k)
         if i < 0:
             self.AddData(k,v,"")
         else:
             if len(self.__ValueList):
                 self.__ValueList[i]=v
 
-    ## Searchs key where (k in key) from position p
+    ## Searches key where (k in key) from position p
     #  @param k (str)
     #  @param p (int)
     #  @return int
     def GetKeyIndex(self,k,p=0):
         for CurrentIndex, key in enumerate(self.__KeyList):
             if CurrentIndex>=p and k in key:
+                return CurrentIndex
+        return -1
+
+    ## Looks for a key where k exactly matches the key from position p
+    #  @param k (str)
+    #  @param p (int)
+    #  @return int
+    def GetExactKeyIndex(self,k,p=0):
+        for CurrentIndex, key in enumerate(self.__KeyList):
+            if CurrentIndex>=p and k == key:
                 return CurrentIndex
         return -1
 
