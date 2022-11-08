@@ -10,6 +10,10 @@ Full documentation [here](https://arutar.github.io/wininfparser/).
 ```Batchfile
 pip install wininfparser
 ```
+##### Upgrade
+```Batchfile
+pip install wininfparser --upgrade
+```
 
 ## Usage
 - #### Open and save inf files
