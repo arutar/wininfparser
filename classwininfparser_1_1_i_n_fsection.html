@@ -168,8 +168,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aba1b437ac11c33ccf9df7a2011cf0b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets key value pair.  <a href="classwininfparser_1_1_i_n_fsection.html#aba1b437ac11c33ccf9df7a2011cf0b97">More...</a><br /></td></tr>
 <tr class="separator:aba1b437ac11c33ccf9df7a2011cf0b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a60d50fe4fa59cda676ae3cacdbe6570c">GetKeyIndex</a> (self, k, p=0)</td></tr>
-<tr class="memdesc:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searchs key where (k in key) from position p.  <a href="classwininfparser_1_1_i_n_fsection.html#a60d50fe4fa59cda676ae3cacdbe6570c">More...</a><br /></td></tr>
+<tr class="memdesc:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches key where (k in key) from position p.  <a href="classwininfparser_1_1_i_n_fsection.html#a60d50fe4fa59cda676ae3cacdbe6570c">More...</a><br /></td></tr>
 <tr class="separator:a60d50fe4fa59cda676ae3cacdbe6570c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68eed7efb016453036a6e68f5be005ba"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a68eed7efb016453036a6e68f5be005ba">GetExactKeyIndex</a> (self, k, p=0)</td></tr>
+<tr class="memdesc:a68eed7efb016453036a6e68f5be005ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks for a key where k exactly matches the key from position p.  <a href="classwininfparser_1_1_i_n_fsection.html#a68eed7efb016453036a6e68f5be005ba">More...</a><br /></td></tr>
+<tr class="separator:a68eed7efb016453036a6e68f5be005ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f088525af4bcd251a748331819152c2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_i_n_fsection.html#a8f088525af4bcd251a748331819152c2">SearchKeyIter</a> (self, k, p=0)</td></tr>
 <tr class="memdesc:a8f088525af4bcd251a748331819152c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searchs key where (k in key) from position p this function used to iterate over section and search.  <a href="classwininfparser_1_1_i_n_fsection.html#a8f088525af4bcd251a748331819152c2">More...</a><br /></td></tr>
 <tr class="separator:a8f088525af4bcd251a748331819152c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -709,6 +712,50 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a68eed7efb016453036a6e68f5be005ba" name="a68eed7efb016453036a6e68f5be005ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68eed7efb016453036a6e68f5be005ba">&#9670;&nbsp;</a></span>GetExactKeyIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def wininfparser.INFsection.GetExactKeyIndex </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>p</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Looks for a key where k exactly matches the key from position p. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>(str) </td></tr>
+    <tr><td class="paramname">p</td><td>(int) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="a4431d920ce5b7834643d6fdcf2d3dcc7" name="a4431d920ce5b7834643d6fdcf2d3dcc7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4431d920ce5b7834643d6fdcf2d3dcc7">&#9670;&nbsp;</a></span>GetIndent()</h2>
 
@@ -762,7 +809,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Searchs key where (k in key) from position p. </p>
+<p>Searches key where (k in key) from position p. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>(str) </td></tr>
