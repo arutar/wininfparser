@@ -223,9 +223,13 @@ $(function() {
 <div class="line">Key=s[2]</div>
 <div class="line">print(Key)</div>
 <div class="line"> </div>
-<div class="line"><span class="comment"># Find the first key containing &quot;iBKDG&quot; and return its value</span></div>
-<div class="line">Key=s[<span class="stringliteral">&quot;iBKDG&quot;</span>]</div>
-<div class="line">print(Key)</div>
+<div class="line"><span class="comment"># Finds the first key containing &quot;iBKDG&quot; and return its value</span></div>
+<div class="line">Value=s.Find(<span class="stringliteral">&quot;iBKDG&quot;</span>)</div>
+<div class="line">print(Value)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Finds the first key exactly matching &quot;%iBKDG%&quot; and return its value</span></div>
+<div class="line">Value=s[<span class="stringliteral">&quot;%iBKDG%&quot;</span>]</div>
+<div class="line">print(Value)</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">#Searches for keys that contain &quot;i830M&quot; and returns their values</span></div>
 <div class="line"><span class="keywordflow">for</span> k,v,c <span class="keywordflow">in</span> s.SearchKeyIter(<span class="stringliteral">&quot;i830M&quot;</span>):</div>
