@@ -177,9 +177,13 @@ if s is None:
 Key=s[2]
 print(Key)
 
-# Find the first key containing "iBKDG" and return its value
-Key=s["iBKDG"]
-print(Key)
+# Finds the first key containing "iBKDG" and return its value
+Value=s.Find("iBKDG")
+print(Value)
+
+# Finds the first key exactly matching "%iBKDG%" and return its value
+Value=s["%iBKDG%"]
+print(Value)
 
 #Searches for keys that contain "i830M" and returns their values
 for k,v,c in s.SearchKeyIter("i830M"):
