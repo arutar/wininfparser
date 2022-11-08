@@ -34,6 +34,7 @@ import sys
 #  INFsection Class
 #  =================================================
 #  - \ref wininfparser.INFsection.GetKeyIndex "INFsection.GetKeyIndex"
+#  - \ref wininfparser.INFsection.GetExactKeyIndex "INFsection.GetExactKeyIndex"
 #  - \ref wininfparser.INFsection.SetKeyAutoSize "INFsection.SetKeyAutoSize"
 #  - \ref wininfparser.INFsection.SetHeader "INFsection.SetHeader"
 #  - \ref wininfparser.INFsection.SetIndents "INFsection.SetIndents"
