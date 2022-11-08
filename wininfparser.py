@@ -701,6 +701,7 @@ class WinINF:
         self.__Current=None
         self.__ItemCount=0
         self.__SectionsDict={}
+        self.__FileCodec = None
 
     ## Lets go through the sections!
     #  @return WinINF
@@ -812,15 +813,17 @@ class WinINF:
     ## Opens INF file.
     #  If Name Full faile path to inf file
     #  @param Name (str)
-    def ParseFile(self,Name):
+    #  @param codec (str) for example can be "UTF-8"
+    def ParseFile(self,Name,codec=None):
         self.__Head=None
         self.__Tail=None
         self.__Current=None
         self.__ItemCount=0
         self.__SectionsDict = {}
+        self.__FileCodec=codec
 
         self.__FileName=Name
-        f=open(Name)
+        f=open(Name,encoding=self.__FileCodec)
 
         SepRE=re.compile('[^";=]*("|;|=)?')
         KeyRE = re.compile('[^"]*(")')
@@ -947,14 +950,18 @@ class WinINF:
     ## Saves INF file.
     #  If Name argument is None, then data saved to current file and overwrite information on it
     #  @param Name (str)
-    def Save(self, Name=None):
+    #  @param codec (str) for example can be "UTF-8"
+    def Save(self, Name=None,codec=None):
         if Name is not None:
             self.__FileName=Name
+
+        if codec is not None:
+            self.__FileCodec=codec
 
         if self.__Head is None:
             return
 
-        f=open(self.__FileName,"w")
+        f=open(self.__FileName,"w",encoding=self.__FileCodec)
 
         for Current in self:
             f.write(Current.Save())
