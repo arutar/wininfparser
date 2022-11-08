@@ -42,6 +42,7 @@ import sys
 #  - \ref wininfparser.INFsection.Previous "INFsection.Previous"
 #  - \ref wininfparser.INFsection.AddData "INFsection.AddData"
 #  - \ref wininfparser.INFsection.AddDataP "INFsection.AddDataP"
+#  - \ref wininfparser.INFsection.Find "INFsection.Find"
 #  - \ref wininfparser.INFsection.FindKey "INFsection.FindKey"
 #  - \ref wininfparser.INFsection.FindValueIndex "INFsection.FindValueIndex"
 #  - \ref wininfparser.INFsection.FindValue "INFsection.FindValue"
@@ -110,6 +111,10 @@ class INFsection:
         self.__SearchValue = None
         self.__SearchValueIndex = 0
         self.__ItHelpFlag=False
+
+    ## Returns section size
+    def GetSize(self):
+        return len(self.__KeyList)
 
     ## Lets go through the section content!
     #  @return INFsection
@@ -557,7 +562,7 @@ class INFsection:
                 return CurrentIndex
         return -1
 
-    ## Searchs key where (k in key) from position p
+    ## Searches key where (k in key) from position p
     #  this function used to iterate over section and search
     #  @param k (str)
     #  @param p (int)
@@ -568,7 +573,7 @@ class INFsection:
         self.__SearchKeyIndex=p
         return self
 
-    ## Searchs value where (v in value) from position p
+    ## Searches value where (v in value) from position p
     #  this function used to iterate over section and search
     #  @param v (str)
     #  @param p (int)
@@ -579,7 +584,20 @@ class INFsection:
         self.__SearchValueIndex=p
         return self
 
-    ## Searchs key where (k in key) from position p
+    ## Searches key where (k in key) from position p and return its value
+    #  @param k (str)
+    #  @param p (int)
+    #  @return str (returns a value for a partially or fully matched key)
+    def Find(self, k:str, p:int = 0):
+        KeyInd=self.GetKeyIndex(k,p)
+        if KeyInd < 0:
+            return ""
+
+        if len(self.__ValueList):
+            return self.__ValueList[KeyInd]
+        return self.__KeyList[KeyInd]
+
+    ## Searches key where (k in key) from position p
     #  @param k (str)
     #  @param p (int)
     #  @return str (full key string)
@@ -589,7 +607,7 @@ class INFsection:
                 return key
         return ""
 
-    ## Searchs value where (v in value) from position p
+    ## Searches value where (v in value) from position p
     #  @param v (str)
     #  @param p (int)
     #  @return int
@@ -599,7 +617,7 @@ class INFsection:
                 return CurrentIndex
         return -1
 
-    ## Searchs value where (v in value) from position p
+    ## Searches value where (v in value) from position p
     #  @param v (str)
     #  @param p (int)
     #  @return str (full value string)
