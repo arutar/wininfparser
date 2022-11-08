@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['save_0',['Save',['../classwininfparser_1_1_i_n_fsection.html#a932d6965c7e6cf7fd3f7750e61eb2407',1,'wininfparser.INFsection.Save()'],['../classwininfparser_1_1_win_i_n_f.html#a3ed5f26a663cd17d662f2e5bd4eb8716',1,'wininfparser.WinINF.Save()']]],
+  ['save_0',['Save',['../classwininfparser_1_1_i_n_fsection.html#a932d6965c7e6cf7fd3f7750e61eb2407',1,'wininfparser.INFsection.Save()'],['../classwininfparser_1_1_win_i_n_f.html#ade09a14f9a2e2159edcd17f8b67042c6',1,'wininfparser.WinINF.Save()']]],
   ['searchkeyiter_1',['SearchKeyIter',['../classwininfparser_1_1_i_n_fsection.html#a8f088525af4bcd251a748331819152c2',1,'wininfparser::INFsection']]],
   ['searchvalueiter_2',['SearchValueIter',['../classwininfparser_1_1_i_n_fsection.html#a34c64cfa5a0d807850e983e3799ad106',1,'wininfparser::INFsection']]],
   ['sections_3',['Sections',['../classwininfparser_1_1_win_i_n_f.html#a38601fccc62ba63fb72272fc76056d3d',1,'wininfparser::WinINF']]],

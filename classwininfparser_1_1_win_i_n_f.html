@@ -115,12 +115,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6730acd14c7cdae0e95aebe7cf99fb6a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_win_i_n_f.html#a6730acd14c7cdae0e95aebe7cf99fb6a">RemoveSection</a> (self, <a class="el" href="classwininfparser_1_1_i_n_fsection.html">INFsection</a> Section)</td></tr>
 <tr class="memdesc:a6730acd14c7cdae0e95aebe7cf99fb6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes selected section!  <a href="classwininfparser_1_1_win_i_n_f.html#a6730acd14c7cdae0e95aebe7cf99fb6a">More...</a><br /></td></tr>
 <tr class="separator:a6730acd14c7cdae0e95aebe7cf99fb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accc4e85f9b219c8ac117e7fa204dfc5a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_win_i_n_f.html#accc4e85f9b219c8ac117e7fa204dfc5a">ParseFile</a> (self, Name)</td></tr>
-<tr class="memdesc:accc4e85f9b219c8ac117e7fa204dfc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens INF file.  <a href="classwininfparser_1_1_win_i_n_f.html#accc4e85f9b219c8ac117e7fa204dfc5a">More...</a><br /></td></tr>
-<tr class="separator:accc4e85f9b219c8ac117e7fa204dfc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed5f26a663cd17d662f2e5bd4eb8716"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_win_i_n_f.html#a3ed5f26a663cd17d662f2e5bd4eb8716">Save</a> (self, Name=None)</td></tr>
-<tr class="memdesc:a3ed5f26a663cd17d662f2e5bd4eb8716"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves INF file.  <a href="classwininfparser_1_1_win_i_n_f.html#a3ed5f26a663cd17d662f2e5bd4eb8716">More...</a><br /></td></tr>
-<tr class="separator:a3ed5f26a663cd17d662f2e5bd4eb8716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c55c2f68b1bdfd4b4573e99f172ffce"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_win_i_n_f.html#a8c55c2f68b1bdfd4b4573e99f172ffce">ParseFile</a> (self, Name, codec=None)</td></tr>
+<tr class="memdesc:a8c55c2f68b1bdfd4b4573e99f172ffce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens INF file.  <a href="classwininfparser_1_1_win_i_n_f.html#a8c55c2f68b1bdfd4b4573e99f172ffce">More...</a><br /></td></tr>
+<tr class="separator:a8c55c2f68b1bdfd4b4573e99f172ffce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade09a14f9a2e2159edcd17f8b67042c6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwininfparser_1_1_win_i_n_f.html#ade09a14f9a2e2159edcd17f8b67042c6">Save</a> (self, Name=None, codec=None)</td></tr>
+<tr class="memdesc:ade09a14f9a2e2159edcd17f8b67042c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves INF file.  <a href="classwininfparser_1_1_win_i_n_f.html#ade09a14f9a2e2159edcd17f8b67042c6">More...</a><br /></td></tr>
+<tr class="separator:ade09a14f9a2e2159edcd17f8b67042c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class <a class="el" href="classwininfparser_1_1_win_i_n_f.html" title="Class WinINF - Can open INF files, allows you to get a section by its name, can save INF files,...">WinINF</a> - Can open INF files, allows you to get a section by its name, can save INF files, and allows you to walk through all sections of a file. </p>
@@ -382,8 +382,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="accc4e85f9b219c8ac117e7fa204dfc5a" name="accc4e85f9b219c8ac117e7fa204dfc5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accc4e85f9b219c8ac117e7fa204dfc5a">&#9670;&nbsp;</a></span>ParseFile()</h2>
+<a id="a8c55c2f68b1bdfd4b4573e99f172ffce" name="a8c55c2f68b1bdfd4b4573e99f172ffce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c55c2f68b1bdfd4b4573e99f172ffce">&#9670;&nbsp;</a></span>ParseFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,7 +398,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>Name</em>&#160;</td>
+          <td class="paramname"><em>Name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>codec</em> = <code>None</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -412,6 +418,7 @@ Public Member Functions</h2></td></tr>
 <p >If Name Full faile path to inf file </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Name</td><td>(str) </td></tr>
+    <tr><td class="paramname">codec</td><td>(str) for example can be "UTF-8" </td></tr>
   </table>
   </dd>
 </dl>
@@ -454,8 +461,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3ed5f26a663cd17d662f2e5bd4eb8716" name="a3ed5f26a663cd17d662f2e5bd4eb8716"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ed5f26a663cd17d662f2e5bd4eb8716">&#9670;&nbsp;</a></span>Save()</h2>
+<a id="ade09a14f9a2e2159edcd17f8b67042c6" name="ade09a14f9a2e2159edcd17f8b67042c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade09a14f9a2e2159edcd17f8b67042c6">&#9670;&nbsp;</a></span>Save()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -470,7 +477,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>Name</em> = <code>None</code>&#160;</td>
+          <td class="paramname"><em>Name</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>codec</em> = <code>None</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -484,6 +497,7 @@ Public Member Functions</h2></td></tr>
 <p >If Name argument is None, then data saved to current file and overwrite information on it </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Name</td><td>(str) </td></tr>
+    <tr><td class="paramname">codec</td><td>(str) for example can be "UTF-8" </td></tr>
   </table>
   </dd>
 </dl>
