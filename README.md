@@ -78,6 +78,25 @@ InfFile.AddSection(n)
 #Save inf file
 InfFile.Save(./new_file.inf)
 ```
+##### Otput - ./new_file.inf
+```dosini
+;##########################
+;
+; Header data 07/11/2023
+; Other data
+; Some very important information
+;
+;##########################
+
+
+[New_Section]
+Path    = ./somepath
+Version = 2.34.57    ;megatest
+TestKey = TestValue
+; some comment
+
+; some comment 2
+```
 
 - #### Section management
 ```python
