@@ -64,9 +64,12 @@ n.SetName("New_Section")
 n.AddData("Path","./somepath")
 n.AddData("Version","2.34.57","megatest")
 n["TestKey"]="TestValue"
+#Add comment
 n.AddComment(" some comment")
+#Add two empty lines
 n.AddComment()
 n.AddComment()
+#Add comment
 n.AddComment(" some comment 2")
 
 #Add section to the end of the inf file
