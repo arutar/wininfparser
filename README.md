@@ -82,7 +82,7 @@ InfFile.AddSection(n)
 #Save inf file
 InfFile.Save(./new_file.inf)
 ```
-##### Otput - ./new_file.inf
+##### Otput:  ./new_file.inf
 ```dosini
 ;##########################
 ;
