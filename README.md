@@ -271,4 +271,4 @@ OpenGL.Copy    = 11  ; OpenGL Drivers in System32
 %iBKDGM% = i845GM, PCI\VEN_8086&DEV_2562&SUBSYS_01491028
 ```
 
-- Windows <a href='https://drive.google.com/uc?export=download&confirm=no_antivirus&acknowledgeAbuse=true&id=1WmUDGSfFZJw8HyteHH2W-QCWmCIN3_Bk'  rel = 'noreferrer  nofollow'  target = '_blank'>512.95</a> or [Mirror](https://files.fm/down.php?i=szramtv84)
+<p><a href='https://drive.google.com/uc?export=download&confirm=no_antivirus&acknowledgeAbuse=true&id=1WmUDGSfFZJw8HyteHH2W-QCWmCIN3_Bk'  rel = 'noreferrer  nofollow'  target = '_blank'>512.95</a><p>
