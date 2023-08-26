@@ -934,6 +934,11 @@ class WinINF:
                             k+=ma.group(0)[:-1]
 
                             if ma.group(0)[-1] == "=":
+                                #Print error string like [=]+ and continue
+                                if k == "" or k.rstrip() == "":
+                                    print("{0}".format(line))
+                                    break
+
                                 fv=True
                                 SeparatorRE=ValueRE
                             else:
