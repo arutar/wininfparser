@@ -390,12 +390,15 @@ class INFsection:
         if k: k=k.rstrip()
         self.__KeyList.append(k)
 
-        if v is not None:
-            v = v.lstrip()
-            if self.__EmptyCount:
-                self.__ValueList=['' for i in range(self.__EmptyCount)]
-                self.__EmptyCount=0
-            self.__ValueList.append(v)
+        if v is not None :
+            if len(self.__KeyList) == 1 or len(self.__ValueList):
+                v = v.lstrip()
+                if self.__EmptyCount:
+                    self.__ValueList=['' for i in range(self.__EmptyCount)]
+                    self.__EmptyCount=0
+                self.__ValueList.append(v)
+            else:
+                print("There was an error trying to write a key and value to a section that contains only keys!")
         elif len(self.__ValueList) and v is None:
             self.__ValueList.append('')
 
@@ -855,20 +858,23 @@ class WinINF:
         self.__FileName=Name
         f=open(Name,encoding=self.__FileCodec)
 
-        SepRE=re.compile('[^";=]*("|;|=)?')
+        #SepRE=re.compile('[^";=]*("|;|=)?')
+        SepRE = re.compile('[^][";=]*(\]|\[|"|;|=)?')
         KeyRE = re.compile('[^"]*(")')
+        #ValueRE = re.compile('[^";=]*("|;)?')
         ValueRE = re.compile('[^";=]*("|;)?')
 
         EmptyRE = re.compile('\\s*$')
         CommentRE = re.compile("\\s*(;.*)?$")
         SectRE = re.compile(" *\\[([^]]*)\\](\\s*;.*)?")
 
-        for line in f:
+        for lineNumber, line in enumerate(f):
             line = line.rstrip()
             if line == "" or EmptyRE.match(line) is not None:
                 if self.__Tail is not None:
                     self.__Tail.AddComment()
-
+                else:
+                    print("Warning: Line {0} An empty line with no section! [skiped]".format(lineNumber))
                 continue
 
             ms = CommentRE.match(line)
@@ -908,12 +914,16 @@ class WinINF:
             p=0
             fv=False
             f_open=False
+            f_error=False
             k=""
             v=""
             c=""
             while p != len(line):
                 ma = SeparatorRE.match(line,pos=p)
                 if ma is None:
+                    if f_open:
+                        print("Warning: Line {0} Contains an unclosed quote.".format(lineNumber))
+
                     if v:
                         v += line[p:]
                     else:
@@ -926,17 +936,29 @@ class WinINF:
                         k+=ma.group(0)
                         p = ma.span()[1]
                     else:
+                        # if SeparatorRE == ValueRE:
+                        #     print("Warning: Line {0} Contains several equals characters.".format(lineNumber))
+                        #     f_error = True
+                        #     break
+
                         v+=ma.group(0)
                         p = ma.span()[1]
+                        if len(ma.group(0)) == 0 and p != len(line):
+                            p+=1
                 else:
                     if not fv:
+                        if SeparatorRE != KeyRE and (ma.group(0)[-1] == '[' or ma.group(0)[-1] == ']'):
+                            print("Error: Line {0} Contains invalid characters '[' or ']'. [skiped]".format(lineNumber))
+                            f_error=True
+                            break
+
                         if ma.group(0)[-1] != '"':
                             k+=ma.group(0)[:-1]
 
                             if ma.group(0)[-1] == "=":
-                                #Print error string like [=]+ and continue
-                                if k == "" or k.rstrip() == "":
-                                    print("{0}".format(line))
+                                if ma.group(0).rstrip().lstrip() == "=":
+                                    print("Error: Line {0} Contains empty key. [skiped]".format(lineNumber))
+                                    f_error=True
                                     break
 
                                 fv=True
@@ -948,14 +970,27 @@ class WinINF:
                         else:
                             k += ma.group(0)
                             if f_open:
+                                # if ma.group(0).rstrip().lstrip() == '"':
+                                #     print("Error: Line {0} Contains empty key. [skiped]".format(lineNumber))
+                                #     f_error = True
+                                #     break
+
                                 f_open=False
                                 SeparatorRE=SepRE
                             else:
+                                # if len(ma.group(0).rstrip().lstrip())>1:
+                                #     print("Error: Line {0} contains an invalid format. [skiped]".format(lineNumber))
+                                #     f_error = True
+                                #     break
+
                                 f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
                     else:
                         if ma.group(0)[-1] != '"':
+                            if f_open:
+                                print("Warning: Line {0} Contains an unclosed quote.".format(lineNumber))
+
                             v+=ma.group(0)[:-1]
 
                             c = line[ma.span()[1] - 1:]
@@ -968,15 +1003,27 @@ class WinINF:
                                 f_open=False
                                 SeparatorRE=ValueRE
                             else:
+                                # if len(v) > 1:
+                                #     print("Warning: Line {0} contains several closing and opening quotes.".format(lineNumber))
+
                                 f_open = True
                                 SeparatorRE = KeyRE
                         p = ma.span()[1]
 
-            if self.__Tail is not None:
+            if self.__Tail is not None and f_error == False:
+                if self.__Tail.GetName() == "":
+                    print("Error: Line {0} does not belong to any section. [skiped]".format(lineNumber))
+                    continue
+
                 if v:
                     self.__Tail.AddData(k,v,c,fraw=True)
                 else:
                     self.__Tail.AddData(k, None, c,fraw=True)
+            else:
+                if self.__Tail is None and f_error == False:
+                    print("Error: Line {0} does not belong to any section. [skiped]".format(lineNumber))
+
+
 
         if self.__Tail is not None:
             self.__Tail.SetValid()
@@ -986,6 +1033,7 @@ class WinINF:
     #  If Name argument is None, then data saved to current file and overwrite information on it
     #  @param Name (str)
     #  @param codec (str) for example can be "UTF-8"
+    #  @return (bool)
     def Save(self, Name=None,codec=None):
         if Name is not None:
             self.__FileName=Name
@@ -994,7 +1042,8 @@ class WinINF:
             self.__FileCodec=codec
 
         if self.__Head is None:
-            return
+            print("Error: empty inf file, nothing to save")
+            return False
 
         f=open(self.__FileName,"w",encoding=self.__FileCodec)
 
@@ -1002,6 +1051,7 @@ class WinINF:
             f.write(Current.Save())
 
         f.close()
+        return True
 
 
 
