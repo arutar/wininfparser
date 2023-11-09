@@ -397,7 +397,7 @@ class INFsection:
                 self.__EmptyCount=0
             if len(self.__KeyList) - 1 != len(self.__ValueList):
                 print("Warning the section [{}]: will be converted to key value type!".format(self.__Name))
-                self.__ValueList = ['' for i in range(len(self.__KeyList) - 1 - len(self.__ValueList))]
+                self.__ValueList += ['' for i in range(len(self.__KeyList) - 1 - len(self.__ValueList))]
             self.__ValueList.append(v)
 
         elif len(self.__ValueList) and v is None:
