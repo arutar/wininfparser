@@ -265,7 +265,7 @@ class INFsection:
     ## Returns previous Section
     #  @return INFsection
     def Previous(self):
-        self.__PreviousSection
+        return self.__PreviousSection
 
     ## Sets sction type must be INFsection.comment or INFsection.single_line or INFsection.key_pair
     def SetType(self,t):
@@ -390,15 +390,16 @@ class INFsection:
         if k: k=k.rstrip()
         self.__KeyList.append(k)
 
-        if v is not None :
-            if len(self.__KeyList) == 1 or len(self.__ValueList):
-                v = v.lstrip()
-                if self.__EmptyCount:
-                    self.__ValueList=['' for i in range(self.__EmptyCount)]
-                    self.__EmptyCount=0
-                self.__ValueList.append(v)
-            else:
-                print("There was an error trying to write a key and value to a section that contains only keys!")
+        if v is not None:
+            v = v.lstrip()
+            if self.__EmptyCount:
+                self.__ValueList=['' for i in range(self.__EmptyCount)]
+                self.__EmptyCount=0
+            if len(self.__KeyList) - 1 != len(self.__ValueList):
+                print("Warning the section [{}]: will be converted to key value type!".format(self.__Name))
+                self.__ValueList = ['' for i in range(len(self.__KeyList) - 1 - len(self.__ValueList))]
+            self.__ValueList.append(v)
+
         elif len(self.__ValueList) and v is None:
             self.__ValueList.append('')
 
@@ -832,6 +833,7 @@ class WinINF:
         if p is not None:
             if n is not None:
                 p.SetNext(n)
+                n.SetPrevious(p)
             else:
                 p.SetNext(None)
                 self.__Tail=p
