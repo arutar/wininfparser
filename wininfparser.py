@@ -8,6 +8,7 @@
 #
 import re
 import sys
+import os
 
 ## @mainpage
 #  Main Classes
@@ -876,7 +877,7 @@ class WinINF:
                 if self.__Tail is not None:
                     self.__Tail.AddComment()
                 else:
-                    print("Warning: Line {0} An empty line with no section! [skiped]".format(lineNumber))
+                    print("Warning: File [{0}] Line {1} An empty line with no section! [skiped]".format(os.path.basename(self.__FileName),lineNumber))
                 continue
 
             ms = CommentRE.match(line)
@@ -924,7 +925,7 @@ class WinINF:
                 ma = SeparatorRE.match(line,pos=p)
                 if ma is None:
                     if f_open:
-                        print("Warning: Line {0} Contains an unclosed quote.".format(lineNumber))
+                        print("Warning: File [{0}] Line {1} Contains an unclosed quote.".format(os.path.basename(self.__FileName),lineNumber))
 
                     if v:
                         v += line[p:]
@@ -950,7 +951,7 @@ class WinINF:
                 else:
                     if not fv:
                         if SeparatorRE != KeyRE and (ma.group(0)[-1] == '[' or ma.group(0)[-1] == ']'):
-                            print("Error: Line {0} Contains invalid characters '[' or ']'. [skiped]".format(lineNumber))
+                            print("Error: File [{0}] Line {1} Contains invalid characters '[' or ']'. [skiped]".format(os.path.basename(self.__FileName),lineNumber))
                             f_error=True
                             break
 
@@ -958,8 +959,8 @@ class WinINF:
                             k+=ma.group(0)[:-1]
 
                             if ma.group(0)[-1] == "=":
-                                if ma.group(0).rstrip().lstrip() == "=":
-                                    print("Error: Line {0} Contains empty key. [skiped]".format(lineNumber))
+                                if ma.group(0).rstrip().lstrip() == "=" and k == "":
+                                    print("Error: File [{0}] Line {1} Contains empty key. [skiped]".format(os.path.basename(self.__FileName),lineNumber))
                                     f_error=True
                                     break
 
@@ -991,7 +992,7 @@ class WinINF:
                     else:
                         if ma.group(0)[-1] != '"':
                             if f_open:
-                                print("Warning: Line {0} Contains an unclosed quote.".format(lineNumber))
+                                print("Warning: File [{0}] Line {1} Contains an unclosed quote.".format(os.path.basename(self.__FileName),lineNumber))
 
                             v+=ma.group(0)[:-1]
 
@@ -1014,7 +1015,7 @@ class WinINF:
 
             if self.__Tail is not None and f_error == False:
                 if self.__Tail.GetName() == "":
-                    print("Error: Line {0} does not belong to any section. [skiped]".format(lineNumber))
+                    print("Error: File [{0}] Line {1} does not belong to any section. [skiped]".format(os.path.basename(self.__FileName),lineNumber))
                     continue
 
                 if v:
@@ -1023,7 +1024,7 @@ class WinINF:
                     self.__Tail.AddData(k, None, c,fraw=True)
             else:
                 if self.__Tail is None and f_error == False:
-                    print("Error: Line {0} does not belong to any section. [skiped]".format(lineNumber))
+                    print("Error: File [{0}] Line {1} does not belong to any section. [skiped]".format(os.path.basename(self.__FileName),lineNumber))
 
 
 
