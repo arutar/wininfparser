@@ -959,7 +959,7 @@ class WinINF:
                             k+=ma.group(0)[:-1]
 
                             if ma.group(0)[-1] == "=":
-                                if ma.group(0).rstrip().lstrip() == "=" and k == "":
+                                if ma.group(0).rstrip().lstrip() == "=" and EmptyRE.fullmatch(k) is not None:
                                     print("Error: File [{0}] Line {1} Contains empty key. [skiped]".format(os.path.basename(self.__FileName),lineNumber))
                                     f_error=True
                                     break
