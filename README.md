@@ -4,7 +4,8 @@ INF files parser for python
 
 wininfparser Python module that can open, save, edit Windows INF files (Driver Files)
 
-Full documentation [here](https://arutar.github.io/wininfparser/).
+> [!NOTE]
+> [Full documentation](https://arutar.github.io/wininfparser/).
 
 ## Install
 ```Batchfile
