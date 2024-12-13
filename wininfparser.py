@@ -862,7 +862,7 @@ class WinINF:
         f=open(Name,encoding=self.__FileCodec)
 
         #SepRE=re.compile('[^";=]*("|;|=)?')
-        SepRE = re.compile('[^][";=]*(\]|\[|"|;|=)?')
+        SepRE = re.compile('[^][";=]*(\\]|\\[|"|;|=)?')
         KeyRE = re.compile('[^"]*(")')
         #ValueRE = re.compile('[^";=]*("|;)?')
         ValueRE = re.compile('[^";=]*("|;)?')
